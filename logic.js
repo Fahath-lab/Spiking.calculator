@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function checkLogin() {
     var userId = prompt("Enter Login ID:");
     var password = prompt("Enter Password:");
-    if ((userId !== "KMF" || password !== "fazil") || (userId !== "EQAS" || password !== "bioch")) {
+    if (userId !== "KMF" || password !== "fazil") {
       alert("Invalid login. Please refresh and try again.");
       document.body.innerHTML = "";
     }
