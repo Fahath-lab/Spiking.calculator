@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Invalid login. Please refresh and try again.");
       document.body.innerHTML = "";
     }
-    if (userId !== "EQAS" || password !== "bioch") {
+    else if (userId !== "EQAS" || password !== "bioch") {
       alert("Invalid login. Please refresh and try again.");
       document.body.innerHTML = "";
     } 
