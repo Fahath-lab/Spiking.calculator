@@ -99,16 +99,25 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("amount-required-gms-salt-2").textContent =
       amountRequiredGms.toFixed(3);
     } 
-
   // Login protection
-  function checkLogin() {
+function checkLogin() {
     var userId = prompt("Enter Login ID:");
     var password = prompt("Enter Password:");
-    if (userId !== "KMF" || password !== "fazil") {
-      alert("Invalid login. Please refresh and try again.");
-      document.body.innerHTML = "";
+
+    // Add multiple valid login credentials
+    if (
+        (userId === "KMF" && password === "fazil") ||   // First login ID and password
+        (userId === "newID" && password === "newPassword")  // Second login ID and password
+    ) {
+        alert("Login successful!");
+    } else {
+        alert("Invalid login. Please refresh and try again.");
+        document.body.innerHTML = "";  // Clear the page content if login fails
     }
-  }
+}
+
+// Call the function to prompt for login
+checkLogin();
 
   // Trigger login prompt on page load
   window.onload = checkLogin;
