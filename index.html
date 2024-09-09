@@ -191,28 +191,7 @@
         var amountRequiredGms = amountRequiredMg / 1000;
         document.getElementById("amount-required-gms-salt-2").textContent =
           amountRequiredGms.toFixed(3);
-        } 
-        function updateDoubleSaltCalculations_3() {
-        var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
-        var target =
-          parseFloat(document.getElementById("target-salt-3").value) || 0;
-        var difference = target - base;
-        document.getElementById("difference-salt-3").textContent =
-          difference.toFixed(2);
-        var volume = parseFloat(document.getElementById("volume").value) || 0;
-        var mmolsRequired = (difference * volume) / 1000;
-        document.getElementById("mmols-required-salt-3").textContent =
-          mmolsRequired.toFixed(2);
-        var amountRequiredMg = mmolsRequired * 84;
-        document.getElementById("amount-required-mg-salt-3").textContent =
-          amountRequiredMg.toFixed(2);
-        var amountRequiredGms = amountRequiredMg / 1000;
-        document.getElementById("amount-required-gms-salt-3").textContent =
-          amountRequiredGms.toFixed(3);
-        var amountofbicarbincreased = difference-salt-4;
-        document.getElementById("difference-salt-4").textContent =
-          difference-salt-4.toFixed(3);
-        } 
+        }
  // Login protection
 function checkLogin() {
     var userId = prompt("Enter Login ID:");
