@@ -192,6 +192,24 @@
         document.getElementById("amount-required-gms-salt-2").textContent =
           amountRequiredGms.toFixed(3);
         } 
+       function updateDoubleSaltCalculations_3() {
+        var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
+        var target =
+          parseFloat(document.getElementById("target-salt-3").value) || 0;
+        var difference = target - base;
+        document.getElementById("difference-salt-3").textContent =
+          difference.toFixed(2);
+        var volume = parseFloat(document.getElementById("volume").value) || 0;
+        var mmolsRequired = (difference * volume) / 1000;
+        document.getElementById("mmols-required-salt-3").textContent =
+          mmolsRequired.toFixed(2);
+        var amountRequiredMg = mmolsRequired * 84;
+        document.getElementById("amount-required-mg-salt-3").textContent =
+          amountRequiredMg.toFixed(2);
+        var amountRequiredGms = amountRequiredMg / 1000;
+        document.getElementById("amount-required-gms-salt-3").textContent =
+          amountRequiredGms.toFixed(3);
+        } 
  // Login protection
 function checkLogin() {
     var userId = prompt("Enter Login ID:");
@@ -492,7 +510,6 @@ function checkLogin() {
               <th>Base</th>
               <th>Target</th>
               <th>Difference</th>
-              <th>Required Amount (mg)</th>
               <th>mmols Required</th>
               <th>Amount Required (mg)</th>
               <th>Amount Required (gms)</th>
@@ -519,7 +536,6 @@ function checkLogin() {
                 />
               </td>
               <td id="difference-salt-3">0.00</td>
-              <td id="required-salt-3">0.00</td>
               <td id="mmols-required-salt-3">0.00</td>
               <td id="amount-required-mg-salt-3">0.00</td>
               <td id="amount-required-gms-salt-3">0.000</td>
@@ -545,7 +561,6 @@ function checkLogin() {
                 />
               </td>
               <td id="difference-salt-4">0.00</td>
-              <td id="required-salt-4">0.00</td>
               <td id="mmols-required-salt-4">0.00</td>
               <td id="amount-required-mg-salt-4">0.00</td>
               <td id="amount-required-gms-salt-4">0.000</td>
