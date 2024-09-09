@@ -208,24 +208,10 @@
   
   var amountRequiredGms = amountRequiredMg / 1000;
   document.getElementById("amount-required-gms-salt-3").textContent = amountRequiredGms.toFixed(3);
-  
-  // Fetch base-salt-4 value for calculation
-  var baseSalt4 = parseFloat(document.getElementById("base-salt-4").value) || 0;
-
-  // Debugging: Log the values of difference and baseSalt4
-  console.log("Difference (salt-3):", difference);
-  console.log("Base (salt-4):", baseSalt4);
-
-  // Calculate the sum of difference-salt-3 and base-salt-4
-  var amountOfBicarbIncreased = difference + baseSalt4;
-
-  // Debugging: Log the result of the addition
-  console.log("Amount of Bicarb Increased:", amountOfBicarbIncreased);
-
-  // Display the result in the respective field
-  document.getElementById("amount-of-bicarb-increased-mmolsL").textContent =
-    amountOfBicarbIncreased.toFixed(2);
-}
+  let differenceSalt3 = parseFloat(document.getElementById("difference-salt-3").value) || 0;
+let baseSalt4 = parseFloat(document.getElementById("base-salt-4").value) || 0;
+          let amountofbicarbincreased = differenceSalt3 + baseSalt4;
+          document.getElementById("amountofbicarbincreased").textContent = amountofbicarbincreased.toFixed(2);
 
  // Login protection
 function checkLogin() {
