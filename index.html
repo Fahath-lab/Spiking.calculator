@@ -192,33 +192,41 @@
         document.getElementById("amount-required-gms-salt-2").textContent =
           amountRequiredGms.toFixed(3);
         }
-      function updateDoubleSaltCalculations_3() {
-    var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
-    var target =
-      parseFloat(document.getElementById("target-salt-3").value) || 0;
-    var difference = target - base;
-    document.getElementById("difference-salt-3").textContent =
-      difference.toFixed(2);
+        function updateDoubleSaltCalculations_3() {
+  var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-3").value) || 0;
+  var difference = target - base;
+  
+  document.getElementById("difference-salt-3").textContent = difference.toFixed(2);
+  
+  var volume = parseFloat(document.getElementById("volume").value) || 0;
+  var mmolsRequired = (difference * volume) / 1000;
+  document.getElementById("mmols-required-salt-3").textContent = mmolsRequired.toFixed(2);
+  
+  var amountRequiredMg = mmolsRequired * 84;
+  document.getElementById("amount-required-mg-salt-3").textContent = amountRequiredMg.toFixed(2);
+  
+  var amountRequiredGms = amountRequiredMg / 1000;
+  document.getElementById("amount-required-gms-salt-3").textContent = amountRequiredGms.toFixed(3);
+  
+  // Fetch base-salt-4 value for calculation
+  var baseSalt4 = parseFloat(document.getElementById("base-salt-4").value) || 0;
 
-    // No need for requiredAmount
-    var mmolsRequired = difference / 55.8;
-    document.getElementById("mmols-required-salt-3").textContent =
-      mmolsRequired.toFixed(2);
+  // Debugging: Log the values of difference and baseSalt4
+  console.log("Difference (salt-3):", difference);
+  console.log("Base (salt-4):", baseSalt4);
 
-    var amountRequiredMg = mmolsRequired * 84;
-    document.getElementById("amount-required-mg-salt-3").textContent =
-      amountRequiredMg.toFixed(2);
+  // Calculate the sum of difference-salt-3 and base-salt-4
+  var amountOfBicarbIncreased = difference + baseSalt4;
 
-    var amountRequiredGms = amountRequiredMg / 1000;
-    document.getElementById("amount-required-gms-salt-3").textContent =
-      amountRequiredGms.toFixed(3);
+  // Debugging: Log the result of the addition
+  console.log("Amount of Bicarb Increased:", amountOfBicarbIncreased);
 
-    // New variable for the sum of difference-salt-3 and base-salt-4
-    var basesalt4 = parseFloat(document.getElementById("base-salt-4").value) || 0;
-    var amountOfBicarbIncreased = difference + baseSalt4;
-    document.getElementById("amount-bicarb-increased").textContent =
-      amountOfBicarbIncreased.toFixed(2);
+  // Display the result in the respective field
+  document.getElementById("amount-of-bicarb-increased-mmolsL").textContent =
+    amountOfBicarbIncreased.toFixed(2);
 }
+
  // Login protection
 function checkLogin() {
     var userId = prompt("Enter Login ID:");
@@ -522,7 +530,7 @@ function checkLogin() {
               <th>mmols Required</th>
               <th>Amount Required (mg)</th>
               <th>Amount Required (gms)</th>
-              <th>Amount of Bicarb Increased (mmol/L)</th>
+              <th>Amount of Bicarb Increased (mmols/L)</th>
 
             </tr>
             <tr>
@@ -548,7 +556,7 @@ function checkLogin() {
               <td id="mmols-required-salt-3">0.00</td>
               <td id="amount-required-mg-salt-3">0.00</td>
               <td id="amount-required-gms-salt-3">0.000</td>
-              <td id="amount of bicarb increased">0.00</td>
+              <td id="amount-of-bicarb-increased-mmolsL">0.00</td>
             </tr>
              <tr>
               <td>10</td>
