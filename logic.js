@@ -107,7 +107,7 @@ function checkLogin() {
     // Add multiple valid login credentials
     if (
         (userId === "KMF" && password === "fazil") ||   // First login ID and password
-        (userId === "newID" && password === "newPassword")  // Second login ID and password
+        (userId === "EQAS" && password === "bioch")  // Second login ID and password
     ) {
         alert("Login successful!");
     } else {
