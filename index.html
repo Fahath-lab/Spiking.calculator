@@ -6,7 +6,7 @@
     <title>SPIKING CALCULATOR</title>
     <style>
       body {
-        margin: 0;
+        margin: 100;
         font-family: "Georgia", serif; /* Elegant font */
         color: #333;
       }
@@ -220,26 +220,6 @@ function updateDoubleSaltCalculations_4() {
   var amountRequiredGms = amountRequiredMg / 1000;
   document.getElementById("amount-required-gms-salt-4").textContent = amountRequiredGms.toFixed(3);
    }
- // Login protection
-function checkLogin() {
-    var userId = prompt("Enter Login ID:");
-    var password = prompt("Enter Password:");
-
-    // Add multiple valid login credentials
-    if (
-        (userId === "KMF" && password === "fazil") ||   // First login ID and password
-        (userId === "EQAS" && password === "bioch")  // Second login ID and password
-    ) {
-        alert("Login successful!");
-    } else {
-        alert("Invalid login. Please refresh and try again.");
-        document.body.innerHTML = "";  // Clear the page content if login fails
-    }
-      
-      }
-
-      // Trigger login prompt on page load
-      window.onload = checkLogin;
     </script>
   </head>
   <body>
@@ -462,7 +442,7 @@ function checkLogin() {
          
         <!-- Second Double Salts Section ((NH₄)₂Fe(SO₄)₂·6H₂O) -->
         <div class="double-salts-section">
-          <h3>
+          <h3>urth
             {Salt: (NH₄)₂Fe(SO₄)₂·6H₂O}. {Molecular Weight: 392.14}. {Analyte
             Atomic Weight: 55.8}
           </h3>
@@ -575,7 +555,406 @@ function checkLogin() {
             </tr>
           </table>
         </div>
-      </div>
+    <!--fourth Double Salts Section -->
+    <div class="double-salts-section">
+        <h3>
+          {Salt: KH2PO4}. {Molecular Weight: 136.09}. {PHOSPHORUS Atomic
+          Weight:30.97}
+        </h3>
+        <table>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Analyte (mg)</th>
+            <th>Base</th>
+            <th>Target</th>
+            <th>Difference</th>
+            <th>Required Amount (mg)</th>
+            <th>mmols Required</th>
+            <th>Amount Required (mg)</th>
+            <th>Amount Required (gms)</th>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>PHOS</td>
+            <td>
+              <input
+                type="number"
+                id="base-salt-5"
+                step="0.1"
+                oninput="updateDoubleSaltCalculations_5()"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                id="target-salt-5"
+                step="0.1"
+                oninput="updateDoubleSaltCalculations_5()"
+              />
+            </td>
+            <td id="difference-salt-5">0.00</td>
+            <td id="required-salt-5">0.00</td>
+            <td id="mmols-required-salt-5">0.00</td>
+            <td id="amount-required-mg-salt-5">0.00</td>
+            <td id="amount-required-gms-salt-5">0.00</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>K</td>
+            <td>
+             <input
+              type="number"
+              id="base-salt-6"
+              step="0.1"
+              oninput="updateDoubleSaltCalculations_6()"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              id="target-salt-6"
+              step="0.1"
+              oninput="updateDoubleSaltCalculations_6()"
+            />
+          </td>
+          <td id="difference-salt-6">0.00</td>
+          <td id=".">0.00</td>
+          <td id="mmols-required-salt-6">0.00</td>
+          <td id="amount-required-mg-salt-6">0.00</td>
+          <td id="amount-required-gms-salt-6">0.000</td>
+        </tr>
+      </table>
+    </div>
+    <!--fifth Double Salts Section -->
+    <div class="double-salts-section">
+        <h3>
+          {Salt: KCL}. {Molecular Weight: 74.55}
+        </h3>
+        <table>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Analyte (mg)</th>
+            <th>Base</th>
+            <th>Target</th>
+            <th>Difference</th>
+            <th>mmols Required</th>
+            <th>Amount Required (mg)</th>
+            <th>Amount Required (gms)</th>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>K</td>
+            <td>
+              <input
+                type="number"
+                id="base-salt-7"
+                step="0.1"
+                oninput="updateDoubleSaltCalculations_7()"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                id="target-salt-7"
+                step="0.1"
+                oninput="updateDoubleSaltCalculations_7()"
+              />
+            </td>
+            <td id="difference-salt-7">0.00</td>
+            <td id="mmols-required-salt-7">0.00</td>
+            <td id="amount-required-mg-salt-7">0.00</td>
+            <td id="amount-required-gms-salt-7">0.00</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>CL</td>
+            <td>
+             <input
+              type="number"
+              id="base-salt-8"
+              step="0.1"
+              oninput="updateDoubleSaltCalculations_8()"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              id="target-salt-8"
+              step="0.1"
+              oninput="updateDoubleSaltCalculations_8()"
+            />
+          </td>
+          <td id="difference-salt-8">0.00</td>
+          <td id="mmols-required-salt-8">0.00</td>
+          <td id="amount-required-mg-salt-8">0.00</td>
+          <td id="amount-required-gms-salt-8">0.000</td>
+        </tr>
+      </table>
+    </div>  
+    <!--sixth Double Salts Section -->
+          <div class="double-salts-section">
+            <h3>
+              {Salt: LiCL}. {Molecular Weight: 42.39}
+            </h3>
+            <table>
+              <tr>
+                <th>Sl. No.</th>
+                <th>Analyte (mg)</th>
+                <th>Base</th>
+                <th>Target</th>
+                <th>Difference</th>
+                <th>mmols Required</th>
+                <th>Amount Required (mg)</th>
+                <th>Amount Required (gms)</th>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>Lithium</td>
+                <td>
+                  <input
+                    type="number"
+                    id="base-salt-9"
+                    step="0.1"
+                    oninput="updateDoubleSaltCalculations_9()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    id="target-salt-9"
+                    step="0.1"
+                    oninput="updateDoubleSaltCalculations_9()"
+                  />
+                </td>
+                <td id="difference-salt-9">0.00</td>
+                <td id="mmols-required-salt-9">0.00</td>
+                <td id="amount-required-mg-salt-9">0.00</td>
+                <td id="amount-required-gms-salt-9">0.00</td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>CL</td>
+                <td>
+                  <input
+                    type="number"
+                    id="base-salt-10"
+                    step="0.1"
+                    oninput="updateDoubleSaltCalculations_10()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    id="target-salt-10"
+                    step="0.1"
+                    oninput="updateDoubleSaltCalculations_10()"
+                  />
+              <td id="difference-salt-10">0.00</td>
+              <td id="mmols-required-salt-10">0.00</td>
+              <td id="amount-required-mg-salt-10">0.00</td>
+              <td id="amount-required-gms-salt-10">0.00</td>
+            </tr>
+          </table>
+        </div>
+        <!--Seventh Double Salts Section-->
+            <div class="double salt section">
+                <h1>Enzyme Activity Calculation</h1>
+                <table>
+                    <tr>
+                        <th>Analyte</th>
+                        <th>Specific Activity U/mg</th>
+                        <th>Protein Concentration mg/ml</th>
+                        <th>Enzyme Activity U/ml</th>
+                        <th>U/μl</th>
+                        </tr>
+                        <tr>
+                            <td>AST</td>
+                            <td><input
+                                type="number"
+                                id="spec-act-1"
+                                step="0.1"
+                                oninput="updateEnzymeActivity_1()"/>
+                                </td>
+                                <td><input
+                                    type="number"
+                                    id="protein-1"
+                                    step="0.1"
+                                    oninput="updateEnzymeActivity_1()"/>
+                                    </td>
+                                    <td id="enz-act-1">0.00</td>
+                                    <td id="u/ul-1">0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ALT</td>
+                                        <td><input
+                                            type="number"
+                                            id="spec-act-2"
+                                            step="0.1"
+                                            oninput="updateEnzymeActivity_2()"/></td>
+                                            <td><input
+                                                type="number"
+                                                id="protein-2"
+                                                step="0.1"
+                                                oninput="updateEnzymeActivity_2()"/></td>
+                                            <td id="enz-act-2">0.00</td>
+                                            <td id="u/ul-2">0.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ALP</td>
+                                                <td><input
+                                                    type="numbers"
+                                                    id="spec-act-3"
+                                                    step="0.1"
+                                                    oninput="updateEnzymeActivity_3()"/></td>
+                                                    <td><input
+                                                        type="number"
+                                                        id="protein-3"
+                                                        step="0.1"
+                                                        oninput="updateEnzymeCalculations_3()"/>
+                                                        <td id="enz-act-3">0.00</td>
+                                                        <td id="u/ul-3">0.00</td>
+                                                        </tr></table></div>
+        <!--Eighth Double Salts Section -->
+          <div class="double-salts-section">
+            <h1>Enzymes</h1>
+            <table>
+              <tr>
+                <th>Sl. No.</th>
+                <th>Analyte (mg)</th>
+                <th>Base</th>
+                <th>Target</th>
+                <th>Difference</th>
+                <th>Enzyme Required U/L</th>
+                <th>concentration of enzyme U/μl</th>
+                <th>Volume required</th>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td>AST</td>
+                <td>
+                  <input
+                    type="number"
+                    id="base-enz-1"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_1()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    id="target-enz-1"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_1()"
+                  />
+                </td>
+                <td id="difference-enz-1">0.00</td>
+                <td id="enzyme-required-u/l-enz-1">0.00</td>
+               <td>
+                  <input
+                    type="number"
+                    id="concentration-enz-1"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_1()"
+                  />
+                </td>
+                <td id="volume-required-1">0.00</td>
+              </tr>
+              <tr>
+                <td>17</td>
+                <td>ALT</td>
+                <td>
+                  <input
+                    type="number"
+                    id="base-enz-2"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_2()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    id="target-enz-2"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_2()"
+                  />
+                </td>
+                <td id="difference-enz-2">0.00</td>
+                <td id="enzyme-required-u/l-enz-2">0.00</td>
+               <td>
+                  <input
+                    type="number"
+                    id="concentration-enz-2"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_2()"
+                  />
+                </td>
+                <td id="volume-required-2">0.00</td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td>ALP</td>
+                <td>
+                  <input
+                    type="number"
+                    id="base-enz-3"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_3()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    id="target-enz-3"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_3()"
+                  />
+                </td>
+                <td id="difference-enz-3">0.00</td>
+                <td id="enzyme-required-u/l-enz-3">0.00</td>
+               <td>
+                  <input
+                    type="number"
+                    id="concentration-enz-3"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_3()"
+                  />
+                </td>
+                <td id="volume-required-3">0.00</td>
+              </tr>
+              <tr>
+                <td>19</td>
+                <td>TGL</td>
+                <td>
+                  <input
+                    type="number"
+                    id="base-enz-4"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_4()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    id="target-enz-4"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_4()"
+                  />
+                </td>
+                <td id="difference-enz-4">0.00</td>
+                <td id="enzyme-required-u/l-enz-4">0.00</td>
+               <td>
+                  <input
+                    type="number"
+                    id="concentration-enz-4"
+                    step="0.1"
+                    oninput="updateEnzymeCalculations_4()"
+                  />
+                </td>
+                <td id="volume-required-4">0.00</td>
+              </tr>
+              </table> 
+              </div>
+        </div>
         <!-- Additional compartments -->
         <div class="compartment">Thyroid Hormones</div>
         <div class="compartment">Reproductive Hormones</div>
