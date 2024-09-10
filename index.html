@@ -196,23 +196,15 @@
   var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
   var target = parseFloat(document.getElementById("target-salt-3").value) || 0;
   var difference = target - base;
-  
   document.getElementById("difference-salt-3").textContent = difference.toFixed(2);
-  
   var volume = parseFloat(document.getElementById("volume").value) || 0;
   var mmolsRequired = (difference * volume) / 1000;
   document.getElementById("mmols-required-salt-3").textContent = mmolsRequired.toFixed(2);
-  
-  var amountRequiredMg = mmolsRequired * 84;
+    var amountRequiredMg = mmolsRequired * 84;
   document.getElementById("amount-required-mg-salt-3").textContent = amountRequiredMg.toFixed(2);
-  
   var amountRequiredGms = amountRequiredMg / 1000;
   document.getElementById("amount-required-gms-salt-3").textContent = amountRequiredGms.toFixed(3);
-  let differenceSalt3 = parseFloat(document.getElementById("difference-salt-3").value) || 0;
-let baseSalt4 = parseFloat(document.getElementById("base-salt-4").value) || 0;
-          let amountofbicarbincreased = differenceSalt3 + baseSalt4;
-          document.getElementById("amountofbicarbincreased").textContent = amountofbicarbincreased.toFixed(2);
-
+   }
  // Login protection
 function checkLogin() {
     var userId = prompt("Enter Login ID:");
