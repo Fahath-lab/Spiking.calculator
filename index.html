@@ -192,18 +192,33 @@
         document.getElementById("amount-required-gms-salt-2").textContent =
           amountRequiredGms.toFixed(3);
         }
-        function updateDoubleSaltCalculations_3() {
-  var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
-  var target = parseFloat(document.getElementById("target-salt-3").value) || 0;
+
+    function updateDoubleSaltCalculations_3() {
+      var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
+      var target = parseFloat(document.getElementById("target-salt-3").value) || 0;
+      var difference = target - base;
+      document.getElementById("difference-salt-3").textContent = difference.toFixed(2);
+      var volume = parseFloat(document.getElementById("volume").value) || 0;
+      var mmolsRequired = (difference * volume) / 1000;
+      document.getElementById("mmols-required-salt-3").textContent = mmolsRequired.toFixed(2);
+      var amountRequiredMg = mmolsRequired * 84;
+      document.getElementById("amount-required-mg-salt-3").textContent = amountRequiredMg.toFixed(2);
+      var amountRequiredGms = amountRequiredMg / 1000;
+      document.getElementById("amount-required-gms-salt-3").textContent = amountRequiredGms.toFixed(3);
+    }
+
+function updateDoubleSaltCalculations_4() {
+  var base = parseFloat(document.getElementById("base-salt-4").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-4").value) || 0;
   var difference = target - base;
-  document.getElementById("difference-salt-3").textContent = difference.toFixed(2);
+  document.getElementById("difference-salt-4").textContent = difference.toFixed(2);
   var volume = parseFloat(document.getElementById("volume").value) || 0;
   var mmolsRequired = (difference * volume) / 1000;
-  document.getElementById("mmols-required-salt-3").textContent = mmolsRequired.toFixed(2);
+  document.getElementById("mmols-required-salt-4").textContent = mmolsRequired.toFixed(2);
     var amountRequiredMg = mmolsRequired * 84;
-  document.getElementById("amount-required-mg-salt-3").textContent = amountRequiredMg.toFixed(2);
+  document.getElementById("amount-required-mg-salt-4").textContent = amountRequiredMg.toFixed(2);
   var amountRequiredGms = amountRequiredMg / 1000;
-  document.getElementById("amount-required-gms-salt-3").textContent = amountRequiredGms.toFixed(3);
+  document.getElementById("amount-required-gms-salt-4").textContent = amountRequiredGms.toFixed(3);
    }
  // Login protection
 function checkLogin() {
@@ -508,7 +523,6 @@ function checkLogin() {
               <th>mmols Required</th>
               <th>Amount Required (mg)</th>
               <th>Amount Required (gms)</th>
-              <th>Amount of Bicarb Increased (mmols/L)</th>
 
             </tr>
             <tr>
@@ -534,7 +548,6 @@ function checkLogin() {
               <td id="mmols-required-salt-3">0.00</td>
               <td id="amount-required-mg-salt-3">0.00</td>
               <td id="amount-required-gms-salt-3">0.000</td>
-              <td id="amount-of-bicarb-increased-mmolsL">0.00</td>
             </tr>
              <tr>
               <td>10</td>
