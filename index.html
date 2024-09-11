@@ -220,26 +220,117 @@ function updateDoubleSaltCalculations_4() {
   var amountRequiredGms = amountRequiredMg / 1000;
   document.getElementById("amount-required-gms-salt-4").textContent = amountRequiredGms.toFixed(3);
    }
-      // Login protection
-function checkLogin() {
-    var userId = prompt("Enter Login ID:");
-    var password = prompt("Enter Password:");
-
-    // Add multiple valid login credentials
-    if (
-        (userId === "KMF" && password === "fazil") ||   // First login ID and password
-        (userId === "EQAS" && password === "bioch")  // Second login ID and password
-    ) {
-        alert("Login successful!");
-    } else {
-        alert("Invalid login. Please refresh and try again.");
-        document.body.innerHTML = "";  // Clear the page content if login fails
-    }
-      
-      }
-
-      // Trigger login prompt on page load
-      window.onload = checkLogin;
+   function updateDoubleSaltCalculations_5() {
+        var base = parseFloat(document.getElementById("base-salt-5").value) || 0;
+        var target =
+          parseFloat(document.getElementById("target-salt-5").value) || 0;
+        var difference = target - base;
+        document.getElementById("difference-salt-5").textContent =
+          difference.toFixed(2);
+        var volume = parseFloat(document.getElementById("volume").value) || 0;
+        var requiredAmount = (difference * volume) / 100;
+        document.getElementById("required-salt-5").textContent =
+          requiredAmount.toFixed(2);
+        var mmolsRequired = requiredAmount / 30.97;
+        document.getElementById("mmols-required-salt-5").textContent =
+          mmolsRequired.toFixed(2);
+        var amountRequiredMg = mmolsRequired * 136.09;
+        document.getElementById("amount-required-mg-salt-5").textContent =
+          amountRequiredMg.toFixed(2);
+        var amountRequiredGms = amountRequiredMg / 1000;
+        document.getElementById("amount-required-gms-salt-5").textContent =
+          amountRequiredGms.toFixed(3);
+        }
+        function updateDoubleSaltCalculations_6() {
+  var base = parseFloat(document.getElementById("base-salt-6").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-6").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-salt-6").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0;
+  var mmolsRequired = (difference * volume) / 1000;
+  document.getElementById("mmols-required-salt-6").textContent = mmolsRequired.toFixed(2);
+    var amountRequiredMg = mmolsRequired * 136.09;
+  document.getElementById("amount-required-mg-salt-6").textContent = amountRequiredMg.toFixed(2);
+  var amountRequiredGms = amountRequiredMg / 1000;
+  document.getElementById("amount-required-gms-salt-6").textContent = amountRequiredGms.toFixed(3);
+   }
+   function updateDoubleSaltCalculations_7() {
+  var base = parseFloat(document.getElementById("base-salt-7").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-7").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-salt-7").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0;
+  var mmolsRequired = (difference * volume) / 1000;
+  document.getElementById("mmols-required-salt-7").textContent = mmolsRequired.toFixed(2);
+    var amountRequiredMg = mmolsRequired * 74.55;
+  document.getElementById("amount-required-mg-salt-7").textContent = amountRequiredMg.toFixed(2);
+  var amountRequiredGms = amountRequiredMg / 1000;
+  document.getElementById("amount-required-gms-salt-7").textContent = amountRequiredGms.toFixed(3);
+   }
+   function updateDoubleSaltCalculations_8() {
+  var base = parseFloat(document.getElementById("base-salt-8").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-8").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-salt-8").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0;
+  var mmolsRequired = (difference * volume) / 1000;
+  document.getElementById("mmols-required-salt-8").textContent = mmolsRequired.toFixed(2);
+    var amountRequiredMg = mmolsRequired * 74.55;
+  document.getElementById("amount-required-mg-salt-8").textContent = amountRequiredMg.toFixed(2);
+  var amountRequiredGms = amountRequiredMg / 1000;
+  document.getElementById("amount-required-gms-salt-8").textContent = amountRequiredGms.toFixed(3);
+   }
+   function updateDoubleSaltCalculations_9() {
+  var base = parseFloat(document.getElementById("base-salt-9").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-9").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-salt-9").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0;
+  var mmolsRequired = (difference * volume) / 1000;
+  document.getElementById("mmols-required-salt-9").textContent = mmolsRequired.toFixed(2);
+    var amountRequiredMg = mmolsRequired * 42.39;
+  document.getElementById("amount-required-mg-salt-9").textContent = amountRequiredMg.toFixed(2);
+  var amountRequiredGms = amountRequiredMg / 1000;
+  document.getElementById("amount-required-gms-salt-9").textContent = amountRequiredGms.toFixed(3);
+   }
+function updateDoubleSaltCalculations_10() {
+  var base = parseFloat(document.getElementById("base-salt-10").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-10").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-salt-10").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0;
+  var mmolsRequired = (difference * volume) / 1000;
+  document.getElementById("mmols-required-salt-10").textContent = mmolsRequired.toFixed(2);
+    var amountRequiredMg = mmolsRequired * 42.39;
+  document.getElementById("amount-required-mg-salt-10").textContent = amountRequiredMg.toFixed(2);
+  var amountRequiredGms = amountRequiredMg / 1000;
+  document.getElementById("amount-required-gms-salt-10").textContent = amountRequiredGms.toFixed(3);
+   }
+   function updateEnzymeActivity_1() {
+  var specificactivityumg = parseFloat(document.getElementById("spec-act-1").value) || 0;
+  var proteinconcentrationmgml = parseFloat(document.getElementById("protein-1").value) || 0;
+  var enzymeactivityuml = specificactivityumg * proteinconcentrationmgml;
+  document.getElementById("enz-act-1").textContent = enzymeactivityuml.toFixed(2);
+  var uμl = enzymeactivityuml / 1000;
+  document.getElementById("u/ul-1").textContent = uμl.toFixed(2);
+   }
+   function updateEnzymeActivity_2() {
+  var specificactivityumg = parseFloat(document.getElementById("spec-act-2").value) || 0;
+  var proteinconcentrationmgml = parseFloat(document.getElementById("protein-2").value) || 0;
+  var enzymeactivityuml = specificactivityumg * proteinconcentrationmgml;
+  document.getElementById("enz-act-2").textContent = enzymeactivityuml.toFixed(2);
+  var uμl = enzymeactivityuml / 1000;
+  document.getElementById("u/ul-2").textContent = uμl.toFixed(2);
+   }
+ function updateEnzymeActivity_3() {
+  var specificactivityumg = parseFloat(document.getElementById("spec-act-3").value) || 0;
+  var proteinconcentrationmgml = parseFloat(document.getElementById("protein-3").value) || 0;
+  var enzymeactivityuml = specificactivityumg * proteinconcentrationmgml;
+  document.getElementById("enz-act-3").textContent = enzymeactivityuml.toFixed(2);
+  var uμl = enzymeactivityuml / 1000;
+  document.getElementById("u/ul-3").textContent = uμl.toFixed(2);
+   }
+   
     </script>
   </head>
   <body>
@@ -781,59 +872,56 @@ function checkLogin() {
                 <h1>Enzyme Activity Calculation</h1>
                 <table>
                     <tr>
-                        <th>Analyte</th>
-                        <th>Specific Activity U/mg</th>
-                        <th>Protein Concentration mg/ml</th>
-                        <th>Enzyme Activity U/ml</th>
-                        <th>U/μl</th>
-                        </tr>
-                        <tr>
-                            <td>AST</td>
-                            <td><input
-                                type="number"
-                                id="spec-act-1"
-                                step="0.1"
-                                oninput="updateEnzymeActivity_1()"/>
-                                </td>
-                                <td><input
-                                    type="number"
-                                    id="protein-1"
-                                    step="0.1"
-                                    oninput="updateEnzymeActivity_1()"/>
-                                    </td>
-                                    <td id="enz-act-1">0.00</td>
-                                    <td id="u/ul-1">0.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ALT</td>
-                                        <td><input
-                                            type="number"
-                                            id="spec-act-2"
-                                            step="0.1"
-                                            oninput="updateEnzymeActivity_2()"/></td>
-                                            <td><input
-                                                type="number"
-                                                id="protein-2"
-                                                step="0.1"
-                                                oninput="updateEnzymeActivity_2()"/></td>
-                                            <td id="enz-act-2">0.00</td>
-                                            <td id="u/ul-2">0.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ALP</td>
-                                                <td><input
-                                                    type="numbers"
-                                                    id="spec-act-3"
-                                                    step="0.1"
-                                                    oninput="updateEnzymeActivity_3()"/></td>
-                                                    <td><input
-                                                        type="number"
-                                                        id="protein-3"
-                                                        step="0.1"
-                                                        oninput="updateEnzymeCalculations_3()"/>
-                                                        <td id="enz-act-3">0.00</td>
-                                                        <td id="u/ul-3">0.00</td>
-                                                        </tr></table></div>
+               <th>Analyte</th>
+               <th>Specific Activity U/mg</th>
+                <th>Protein Concentration mg/ml</th>
+                <th>Enzyme Activity U/ml</th>
+                <th>U/μl</th>                        </tr>
+                <tr>
+                <td>AST</td>
+                 <td><input
+                   type="number"
+                id="spec-act-1"
+                step="0.1"
+              oninput="updateEnzymeActivity_1()"/></td>
+                    <td><input
+                    type="number"
+                 id="protein-1"
+                step="0.1"
+                 oninput="updateEnzymeActivity_1()"/>
+                     </td>
+                 <td id="enz-act-1">0.00</td>
+                 <td id="u/ul-1">0.00</td>
+                 </tr>
+                 <tr>
+              <td>ALT</td>
+                  <td><input
+                 type="number"
+              id="spec-act-2"
+                  step="0.1"
+                  oninput="updateEnzymeActivity_2()"/></td>
+                  <td><input
+                  type="number"
+                 id="protein-2"
+                 step="0.1"
+                 oninput="updateEnzymeActivity_2()"/></td>
+                 <td id="enz-act-2">0.00</td>
+                 <td id="u/ul-2">0.00</td></tr>
+                 <tr>
+                 <td>ALP</td>
+                 <td><input
+                 type="numbers"
+                 id="spec-act-3"
+                 step="0.1"
+                oninput="updateEnzymeActivity_3()"/></td>
+                <td><input
+                  type="number"
+                  id="protein-3"
+                 step="0.1"
+                 oninput="updateEnzymeActivity_3()"/></td>                                    
+                   <td id="enz-act-3">0.00</td>
+                  <td id="u/ul-3">0.00</td>
+                  </tr></table></div>
         <!--Eighth Double Salts Section -->
           <div class="double-salts-section">
             <h1>Enzymes</h1>
@@ -845,7 +933,7 @@ function checkLogin() {
                 <th>Target</th>
                 <th>Difference</th>
                 <th>Enzyme Required U/L</th>
-                <th>concentration of enzyme U/μl</th>
+                <th>Enzyme activity U/μl</th>
                 <th>Volume required</th>
               </tr>
               <tr>
@@ -869,14 +957,7 @@ function checkLogin() {
                 </td>
                 <td id="difference-enz-1">0.00</td>
                 <td id="enzyme-required-u/l-enz-1">0.00</td>
-               <td>
-                  <input
-                    type="number"
-                    id="concentration-enz-1"
-                    step="0.1"
-                    oninput="updateEnzymeCalculations_1()"
-                  />
-                </td>
+                <td id="u/ul-1">0.00</td>
                 <td id="volume-required-1">0.00</td>
               </tr>
               <tr>
