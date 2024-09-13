@@ -135,6 +135,18 @@
         if (!volume || isNaN(volume) || volume == 0) {
     alert("Invalid volume value. Ensure it is correctly calculated.");
     return;
+          function printFirstTable() {
+    var printContent = document.querySelector('.excel-table').outerHTML; // Selects the first table with the class
+    var originalContent = document.body.innerHTML;
+
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContent;
+}
+
+function printFullPage() {
+    window.print(); // Prints the entire page with all content (headings, tables, etc.)
+}
   }
 
         
@@ -586,6 +598,7 @@ function updateEnzymeCalculations_4() {
               <td id="required_gms6">0.000</td>
             </tr>
           </table>
+          <button onclick="printFirstTable()">Print 1st Table</button>
 
           <!-- Double Salts Section -->
           <div class="double-salts-section">
@@ -1133,6 +1146,8 @@ function updateEnzymeCalculations_4() {
                 <td>ml</td>
               </tr>
               </table> 
+              <!-- Button to print all tables along with the whole page -->
+<button onclick="printFullPage()">Print Whole Page</button>
               </div>
         </div>
         <!-- Additional compartments -->
