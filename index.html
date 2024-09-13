@@ -133,6 +133,19 @@
       function updateCalculations() {
         var volume = parseFloat(document.getElementById("volume").value) || 0;
 
+        function updateEnzymeActivity_1() {
+          var uμl = enzymeactivityuml / 1000;
+          document.getElementById("u/ul-1").textContent = uμl.toFixed(2);
+        }
+        function updateEnzymeActivity_2() {
+          var uμl = enzymeactivityuml / 1000;
+          document.getElementById("u/ul-2").textContent = uμl.toFixed(2);
+        }
+        function updateEnzymeActivity_3() {
+          var uμl = enzymeactivityuml / 1000;
+          document.getElementById("u/ul-3").textContent = uμl.toFixed(2);
+        }
+
         for (var i = 1; i <= 6; i++) {
           var baseValue =
             parseFloat(document.getElementById("base" + i).value) || 0;
@@ -329,8 +342,84 @@ function updateDoubleSaltCalculations_10() {
   document.getElementById("enz-act-3").textContent = enzymeactivityuml.toFixed(2);
   var uμl = enzymeactivityuml / 1000;
   document.getElementById("u/ul-3").textContent = uμl.toFixed(2);
-   }
-   
+   } 
+   function updateEnzymeCalculations_1() {
+  var base = parseFloat(document.getElementById("base-enz-1").value) || 0;
+  var target = parseFloat(document.getElementById("target-enz-1").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-enz-1").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0; 
+  var enzymeRequireduµl = (difference * volume) / 1000;
+  document.getElementById("enzyme-required-u/l-enz-1").textContent =
+  enzymeRequireduµl .toFixed(2); 
+  // Retrieve uμl from textContent instead of value
+  var uμl = parseFloat(document.getElementById("u/ul-1").textContent);
+
+  // Check if uμl is NaN or 0 to avoid division by zero
+  if (!uμl || isNaN(uμl) || uμl == 0) {
+    alert("Invalid enzyme activity (u/ul-1) value. Ensure it is correctly calculated.");
+    return;
+  }
+
+  var volumeRequired = enzymeRequireduµl / uμl;
+  document.getElementById("volume-required-1").textContent = volumeRequired.toFixed(3);
+}
+function updateEnzymeCalculations_2() {
+  var base = parseFloat(document.getElementById("base-enz-2").value) || 0;
+  var target = parseFloat(document.getElementById("target-enz-2").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-enz-2").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0; 
+  var enzymeRequireduµl = (difference * volume) / 1000;
+  document.getElementById("enzyme-required-u/l-enz-2").textContent =
+  enzymeRequireduµl .toFixed(2); 
+  // Retrieve uμl from textContent instead of value
+  var uμl = parseFloat(document.getElementById("u/ul-2").textContent);
+
+  // Check if uμl is NaN or 0 to avoid division by zero
+  if (!uμl || isNaN(uμl) || uμl == 0) {
+    alert("Invalid enzyme activity (u/ul-1) value. Ensure it is correctly calculated.");
+    return;
+  }
+
+  var volumeRequired = enzymeRequireduµl / uμl;
+  document.getElementById("volume-required-2").textContent = volumeRequired.toFixed(3);
+}
+function updateEnzymeCalculations_3() {
+  var base = parseFloat(document.getElementById("base-enz-3").value) || 0;
+  var target = parseFloat(document.getElementById("target-enz-3").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-enz-3").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0; 
+  var enzymeRequireduµl = (difference * volume) / 1000;
+  document.getElementById("enzyme-required-u/l-enz-3").textContent =
+  enzymeRequireduµl .toFixed(2); 
+  // Retrieve uμl from textContent instead of value
+  var uμl = parseFloat(document.getElementById("u/ul-3").textContent);
+
+  // Check if uμl is NaN or 0 to avoid division by zero
+  if (!uμl || isNaN(uμl) || uμl == 0) {
+    alert("Invalid enzyme activity (u/ul-1) value. Ensure it is correctly calculated.");
+    return;
+  }
+
+  var volumeRequired = enzymeRequireduµl / uμl;
+  document.getElementById("volume-required-3").textContent = volumeRequired.toFixed(3);
+}
+function updateEnzymeCalculations_4() {
+  var base = parseFloat(document.getElementById("base-enz-4").value) || 0;
+  var target = parseFloat(document.getElementById("target-enz-4").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-enz-4").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0; 
+  var amountRequiredMg = (difference * volume) / 100;
+  document.getElementById("enzyme-required-u/l-enz-4").textContent =
+  amountRequiredMg .toFixed(2); 
+  var volumeRequired = amountRequiredMg / 10400 ; 
+  document.getElementById("volume-required-4").textContent = 
+  volumeRequired .toFixed(3)
+}
+
     </script>
   </head>
   <body>
@@ -921,19 +1010,24 @@ function updateDoubleSaltCalculations_10() {
                  oninput="updateEnzymeActivity_3()"/></td>                                    
                    <td id="enz-act-3">0.00</td>
                   <td id="u/ul-3">0.00</td>
-                  </tr></table></div>
+                  </tr>
+                  <tr>
+                    <td>TGL</td>
+                    <td>10400
+                      <td>mg/ml</td>
+                  </tr>
+                </table></div>
         <!--Eighth Double Salts Section -->
           <div class="double-salts-section">
             <h1>Enzymes</h1>
             <table>
               <tr>
                 <th>Sl. No.</th>
-                <th>Analyte (mg)</th>
+                <th>Analyte</th>
                 <th>Base</th>
                 <th>Target</th>
                 <th>Difference</th>
                 <th>Enzyme Required U/L</th>
-                <th>Enzyme activity U/μl</th>
                 <th>Volume required</th>
               </tr>
               <tr>
@@ -957,7 +1051,6 @@ function updateDoubleSaltCalculations_10() {
                 </td>
                 <td id="difference-enz-1">0.00</td>
                 <td id="enzyme-required-u/l-enz-1">0.00</td>
-                <td id="u/ul-1">0.00</td>
                 <td id="volume-required-1">0.00</td>
               </tr>
               <tr>
@@ -981,14 +1074,6 @@ function updateDoubleSaltCalculations_10() {
                 </td>
                 <td id="difference-enz-2">0.00</td>
                 <td id="enzyme-required-u/l-enz-2">0.00</td>
-               <td>
-                  <input
-                    type="number"
-                    id="concentration-enz-2"
-                    step="0.1"
-                    oninput="updateEnzymeCalculations_2()"
-                  />
-                </td>
                 <td id="volume-required-2">0.00</td>
               </tr>
               <tr>
@@ -1012,17 +1097,24 @@ function updateDoubleSaltCalculations_10() {
                 </td>
                 <td id="difference-enz-3">0.00</td>
                 <td id="enzyme-required-u/l-enz-3">0.00</td>
-               <td>
-                  <input
-                    type="number"
-                    id="concentration-enz-3"
-                    step="0.1"
-                    oninput="updateEnzymeCalculations_3()"
-                  />
-                </td>
                 <td id="volume-required-3">0.00</td>
               </tr>
+            </table>
+          </div>
+            <div class="double-salts-section">
+              <h2></h2>
+            <table
               <tr>
+                <th>SL.no</th>
+                <th>Anayte</th>
+                <th>Base</th>
+                <th>Target</th>
+                <th>Difference</th>
+                <th>Amount Required (mg)</th>
+                <th>Concentration</th>
+                <th>Volume Required (ml)</th>
+              </tr>
+
                 <td>19</td>
                 <td>TGL</td>
                 <td>
@@ -1043,15 +1135,8 @@ function updateDoubleSaltCalculations_10() {
                 </td>
                 <td id="difference-enz-4">0.00</td>
                 <td id="enzyme-required-u/l-enz-4">0.00</td>
-               <td>
-                  <input
-                    type="number"
-                    id="concentration-enz-4"
-                    step="0.1"
-                    oninput="updateEnzymeCalculations_4()"
-                  />
-                </td>
                 <td id="volume-required-4">0.00</td>
+                <td>ml</td>
               </tr>
               </table> 
               </div>
