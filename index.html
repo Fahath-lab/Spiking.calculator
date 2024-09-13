@@ -135,22 +135,7 @@
         if (!volume || isNaN(volume) || volume == 0) {
     alert("Invalid volume value. Ensure it is correctly calculated.");
     return;
-          function printFirstTable() {
-    var printContent = document.querySelector('.excel-table').outerHTML; // Selects the first table with the class
-    var originalContent = document.body.innerHTML;
-
-    document.body.innerHTML = printContent;
-    window.print();
-    document.body.innerHTML = originalContent;
-}
-
-function printFullPage() {
-    window.print(); // Prints the entire page with all content (headings, tables, etc.)
-}
-  }
-
-        
-
+          
         for (var i = 1; i <= 6; i++) {
           var baseValue =
             parseFloat(document.getElementById("base" + i).value) || 0;
@@ -424,6 +409,19 @@ function updateEnzymeCalculations_4() {
   document.getElementById("volume-required-4").textContent = 
   volumeRequired .toFixed(3)
 }
+        function printFirstTable() {
+    var printContent = document.querySelector('.excel-table').outerHTML; // Selects the first table with the class
+    var originalContent = document.body.innerHTML;
+
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContent;
+}
+
+function printFullPage() {
+    window.print(); // Prints the entire page with all content (headings, tables, etc.)
+}
+      }
 
     </script>
   </head>
