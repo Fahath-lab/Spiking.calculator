@@ -40,7 +40,7 @@
       .double-salts-section {
         display: none;
         margin: 20px auto;
-        width: 90%;
+        width: 100%;
         border-collapse: collapse;
       }
 
@@ -132,19 +132,12 @@
 
       function updateCalculations() {
         var volume = parseFloat(document.getElementById("volume").value) || 0;
+        if (!volume || isNaN(volume) || volume == 0) {
+    alert("Invalid volume value. Ensure it is correctly calculated.");
+    return;
+  }
 
-        function updateEnzymeActivity_1() {
-          var uμl = enzymeactivityuml / 1000;
-          document.getElementById("u/ul-1").textContent = uμl.toFixed(2);
-        }
-        function updateEnzymeActivity_2() {
-          var uμl = enzymeactivityuml / 1000;
-          document.getElementById("u/ul-2").textContent = uμl.toFixed(2);
-        }
-        function updateEnzymeActivity_3() {
-          var uμl = enzymeactivityuml / 1000;
-          document.getElementById("u/ul-3").textContent = uμl.toFixed(2);
-        }
+        
 
         for (var i = 1; i <= 6; i++) {
           var baseValue =
@@ -357,7 +350,7 @@ function updateDoubleSaltCalculations_10() {
 
   // Check if uμl is NaN or 0 to avoid division by zero
   if (!uμl || isNaN(uμl) || uμl == 0) {
-    alert("Invalid enzyme activity (u/ul-1) value. Ensure it is correctly calculated.");
+    alert("Invalid enzyme activity value. Ensure it is correctly calculated in enzyme activity table.");
     return;
   }
 
@@ -833,7 +826,7 @@ function updateEnzymeCalculations_4() {
         <table>
           <tr>
             <th>Sl. No.</th>
-            <th>Analyte (mg)</th>
+            <th>Analyte (mmol)</th>
             <th>Base</th>
             <th>Target</th>
             <th>Difference</th>
@@ -899,7 +892,7 @@ function updateEnzymeCalculations_4() {
             <table>
               <tr>
                 <th>Sl. No.</th>
-                <th>Analyte (mg)</th>
+                <th>Analyte (mmol)</th>
                 <th>Base</th>
                 <th>Target</th>
                 <th>Difference</th>
@@ -958,15 +951,18 @@ function updateEnzymeCalculations_4() {
         </div>
         <!--Seventh Double Salts Section-->
             <div class="double salt section">
-                <h1>Enzyme Activity Calculation</h1>
+                <h2>Enzyme Activity Calculation</h2>
                 <table>
                     <tr>
+                      <th>SL.no</th>
                <th>Analyte</th>
                <th>Specific Activity U/mg</th>
                 <th>Protein Concentration mg/ml</th>
                 <th>Enzyme Activity U/ml</th>
-                <th>U/μl</th>                        </tr>
+                <th>U/μl</th>                      
+                </tr>
                 <tr>
+                  <td>16</td>
                 <td>AST</td>
                  <td><input
                    type="number"
@@ -983,6 +979,7 @@ function updateEnzymeCalculations_4() {
                  <td id="u/ul-1">0.00</td>
                  </tr>
                  <tr>
+                  <td>17</td>
               <td>ALT</td>
                   <td><input
                  type="number"
@@ -997,6 +994,7 @@ function updateEnzymeCalculations_4() {
                  <td id="enz-act-2">0.00</td>
                  <td id="u/ul-2">0.00</td></tr>
                  <tr>
+                  <td>18</td>
                  <td>ALP</td>
                  <td><input
                  type="numbers"
@@ -1011,11 +1009,7 @@ function updateEnzymeCalculations_4() {
                    <td id="enz-act-3">0.00</td>
                   <td id="u/ul-3">0.00</td>
                   </tr>
-                  <tr>
-                    <td>TGL</td>
-                    <td>10400
-                      <td>mg/ml</td>
-                  </tr>
+                  
                 </table></div>
         <!--Eighth Double Salts Section -->
           <div class="double-salts-section">
@@ -1023,7 +1017,7 @@ function updateEnzymeCalculations_4() {
             <table>
               <tr>
                 <th>Sl. No.</th>
-                <th>Analyte</th>
+                <th>Analyte (U)</th>
                 <th>Base</th>
                 <th>Target</th>
                 <th>Difference</th>
