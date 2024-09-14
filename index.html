@@ -6,7 +6,7 @@
     <title>SPIKING CALCULATOR</title>
     <style>
       body {
-        margin: 100;
+        margin: 0;
         font-family: "Georgia", serif; /* Elegant font */
         color: #333;
       }
@@ -89,7 +89,69 @@
         font-size: 18px;
         color: #4b0082;
       }
-    </style>
+  /* Elegant Print Button Styling */
+.print-btn {
+    background-color: #6A5ACD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.print-btn:hover {
+    background-color: #483D8B;
+    transform: scale(1.05);
+}
+
+.print-btn:active {
+    background-color: #4B0082;
+    transform: scale(1);
+}
+
+@media print {
+  /* First page specific margins */
+  @page:first {
+    margin: 0.4in 0.4in 3.4in 0.4in;
+  }
+
+  /* General margins for all subsequent pages */
+  @page {
+    margin: 1in;
+  }
+  /* Adjust for specific sections */
+  .section {
+    page-break-before: always; /* Ensure new sections start on new pages */
+  }
+/* Optional: Customize layout for content on other pages */
+  .custom-section {
+    page-break-before: always; /* Force a break before the custom section */
+    font-size: 14px; /* Customize font size for readability */
+    margin-top: 2in; /* Set a custom margin for content in this section */
+  }
+  /* Hide non-print elements */
+  .no-print {
+    display: none;
+  }
+}
+@media print {
+  /* Make table headings bold */
+  th {
+    font-weight: bold;
+  }
+
+  /* Hide non-table elements when printing */
+  .compartment {
+    display: none;
+  }
+
+  /* Any other print-specific styles */
+  /* For example, adjusting table layout if necessary */
+}
+</style>
     <script>
       // Random background color on page load
       document.addEventListener("DOMContentLoaded", function () {
@@ -135,7 +197,10 @@
         if (!volume || isNaN(volume) || volume == 0) {
     alert("Invalid volume value. Ensure it is correctly calculated.");
     return;
-          
+  }
+
+        
+
         for (var i = 1; i <= 6; i++) {
           var baseValue =
             parseFloat(document.getElementById("base" + i).value) || 0;
@@ -152,6 +217,27 @@
           ).toFixed(3);
         }
       }
+        window.onload = function() {
+              document.getElementById('chemistry-section').style.display = 'block'; // Open Chemistry by default
+          }
+
+
+          function printTables() {
+      // Hide elements that are not tables
+      document.querySelectorAll('.compartment').forEach(function(compartment) {
+          compartment.style.display = 'none';
+      });
+
+      // Trigger print for visible content only
+      window.print();
+
+      // Restore the page content after printing
+      document.querySelectorAll('.compartment').forEach(function(compartment) {
+          compartment.style.display = 'block';
+      });
+  }
+
+
 
       function updateDoubleSaltCalculations() {
         var base = parseFloat(document.getElementById("base-salt").value) || 0;
@@ -409,28 +495,32 @@ function updateEnzymeCalculations_4() {
   document.getElementById("volume-required-4").textContent = 
   volumeRequired .toFixed(3)
 }
-        function printFirstTable() {
-    var printContent = document.querySelector('.excel-table').outerHTML; // Selects the first table with the class
-    var originalContent = document.body.innerHTML;
 
-    document.body.innerHTML = printContent;
-    window.print();
-    document.body.innerHTML = originalContent;
-}
+        window.onload = function() {
+            document.getElementById('chemistry-section').style.display = 'block'; // Open Chemistry by default
+        }
 
-function printFullPage() {
-    window.print(); // Prints the entire page with all content (headings, tables, etc.)
-}
-      }
+        function printTables() {
+            // Hide elements that are not tables
+            document.querySelectorAll('.compartment').forEach(function(compartment) {
+                compartment.style.display = 'none';
+            });
 
+            // Trigger print for visible content only
+            window.print();
+
+            // Restore the page content after printing
+            document.querySelectorAll('.compartment').forEach(function(compartment) {
+                compartment.style.display = 'block';
+            });
+        }
     </script>
-  </head>
   <body>
     <div class="container">
       <h1>SPIKING CALCULATOR</h1>
 
       <!-- Compartment Buttons -->
-      <div class="section">
+      <div id="chemistry-section" class="compartment-content" style="display: none;">
         <div class="compartment" onclick="toggleChemistry()">Chemistry</div>
 
         <!-- Chemistry Section with Table and Double Salts -->
@@ -445,7 +535,6 @@ function printFullPage() {
               oninput="updateCalculations()"
             />
           </div>
-
           <!-- Analyte Table for Chemistry  -->
           <table class="excel-table">
             <tr>
@@ -596,8 +685,6 @@ function printFullPage() {
               <td id="required_gms6">0.000</td>
             </tr>
           </table>
-          <button onclick="printFirstTable()">Print 1st Table</button>
-
           <!-- Double Salts Section -->
           <div class="double-salts-section">
             <h2>Double Salts</h2>
@@ -643,6 +730,7 @@ function printFullPage() {
                 <td id="amount-required-gms-salt">0.000</td>
               </tr>
             </table>
+
          
         <!-- Second Double Salts Section ((NH₄)₂Fe(SO₄)₂·6H₂O) -->
         <div class="double-salts-section">
@@ -1144,10 +1232,9 @@ function printFullPage() {
                 <td>ml</td>
               </tr>
               </table> 
-              <!-- Button to print all tables along with the whole page -->
-<button onclick="printFullPage()">Print Whole Page</button>
+              <button class="print-btn no-print" onclick="printTables()">Print Table</button></div>
               </div>
-        </div>
+        </div>      
         <!-- Additional compartments -->
         <div class="compartment">Thyroid Hormones</div>
         <div class="compartment">Reproductive Hormones</div>
@@ -1158,8 +1245,7 @@ function printFullPage() {
         <div class="compartment">Urine Protein</div>
         <div class="compartment">Trace Metals</div>
       </div>
-
-      <!-- Footer with name -->
+     <!-- Footer with name -->
       <div class="footer">Made & Maintained by MOHAMMED FAHATH K</div>
     </div>
   </body>
