@@ -36,6 +36,7 @@
       }
 
       /* Initially hidden tables and sections */
+      .compartment-content,
       .excel-table,
       .double-salts-section {
         display: none;
@@ -75,7 +76,6 @@
         padding: 5px;
         width: 80px;
       }
-
       /* Chemistry section toggle */
       #chemistry-section.active .excel-table,
       #chemistry-section.active .volume-section,
@@ -151,6 +151,10 @@
   /* Any other print-specific styles */
   /* For example, adjusting table layout if necessary */
 }
+/* Show active compartments */
+.compartment-content.active {
+            display: block;
+        }
 </style>
     <script>
       // Random background color on page load
@@ -186,7 +190,10 @@
           compartment.style.backgroundColor = getRandomColor();
         });
       });
-
+      function toggleIntroduction() {
+            var introductionCompartment = document.getElementById("introduction-content");
+            introductionCompartment.classList.toggle("active");
+        }
       function toggleChemistry() {
         var chemistrySection = document.getElementById("chemistry-section");
         chemistrySection.classList.toggle("active");
@@ -518,7 +525,38 @@ function updateEnzymeCalculations_4() {
   <body>
     <div class="container">
       <h1>SPIKING CALCULATOR</h1>
+      
+      <div class="compartment" onclick="toggleIntroduction()">Introduction</div>
+      <div id="introduction-content" class="compartment-content" >
 
+      <h1>Introduction to Spiking Calculator</h1>
+
+    <p>A <strong>spiking calculator</strong> is a tool used to determine the precise amount of a substance (analyte) that needs to be added to a sample to reach a desired concentration or target value. It is particularly useful in fields like clinical chemistry, pharmacology, and research, where accurate measurements are crucial for assays or experiments.</p>
+
+    <h2>Sample Type: Serum</h2>
+    <p>In this context, the <strong>sample</strong> is <strong>serum</strong>, which is the clear liquid part of blood that remains after clotting. Serum is commonly used in laboratory tests to measure concentrations of various analytes, such as electrolytes, hormones, or drugs. Accurately spiking serum allows for the adjustment of specific analyte concentrations to mimic physiological conditions or meet experimental requirements.</p>
+
+    <h2>Volume of Serum</h2>
+    <p>The <strong>volume</strong> of the serum sample is an important factor in the calculation. The volume is typically measured in milliliters (mL), deciliters (dL), or liters (L), depending on the context. This volume will be used to calculate the required amount of analyte to be added to reach the target concentration.</p>
+
+    <h2>Basal (Base) Values</h2>
+    <p>The <strong>base value</strong> refers to the initial concentration of the analyte in the serum before spiking. These are also called <strong>basal values</strong> and represent the naturally occurring or pre-existing levels of the analyte. Accurate measurements of these values are necessary to calculate the difference between the base and target concentrations.</p>
+
+    <h2>Target Values</h2>
+    <p>The <strong>target value</strong> is the desired concentration of the analyte that the individual or researcher wants to achieve after spiking the serum. This value is set based on the requirements of the experiment or assay.</p>
+
+    <h2>Difference Calculation</h2>
+    <p>The <strong>difference</strong> between the base and target concentrations is calculated as:</p>
+    <p><strong>Difference = Target - Base</strong></p>
+    <p>This difference is critical for determining the amount of analyte that needs to be added.</p>
+
+    <h2>Amount or Volume Required Calculation</h2>
+    <p>The <strong>amount required</strong> for spiking is calculated based on the difference in analyte concentration and the volume of the serum sample. The formula used takes into account the units of the analyte (such as mg/dL, mmol/L, etc.), and is typically expressed as:</p>
+    <p><strong>Amount Required = Difference × Volume</strong></p>
+    <p>Depending on the units of the analyte, the volume could be expressed in mL, dL, or L, and the calculation is adjusted accordingly. The correct application of units ensures precise spiking, which is critical for maintaining the accuracy and reliability of the experiment or test.</p>
+
+    <p>This spiking process allows for precise control of analyte concentrations, facilitating the achievement of desired experimental conditions or mimicking specific physiological states.</p>
+  </div>
       <!-- Compartment Buttons -->
       <div id="chemistry-section" class="compartment-content" style="display: none;">
         <div class="compartment" onclick="toggleChemistry()">Chemistry</div>
