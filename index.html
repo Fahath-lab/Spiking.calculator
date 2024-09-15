@@ -34,6 +34,49 @@
         margin: 10px 0;
         cursor: pointer;
       }
+      #thyroid-compartment {
+  display: none;
+}
+/* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+/* Style for the volume section */
+.volume-section-thyroid {
+  margin-bottom: 10px;
+}
+
+.volume-section-thyroid label {
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: 100px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
 
       /* Initially hidden tables and sections */
       .compartment-content,
@@ -155,6 +198,76 @@
 .compartment-content.active {
             display: block;
         }
+        /* Style for the compartment */
+.compartment {
+  background-color: #f2f2f2;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Hidden content inside the compartment */
+#reproductive-compartment {
+  display: none; /* Initially hidden */
+  margin-top: 10px;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Table row hover effect */
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Styling for input fields */
+input[type="number"] {
+  width: 80px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Volume section styling */
+.volume-section-reproductive {
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 10px;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+}
+
+/* Compartment content toggling effect */
+.compartment-content {
+  display: none; /* Initially hidden */
+}
+
+.compartment-content.active {
+  display: block; /* Show content when toggled */
+}
+
 </style>
     <script>
       // Random background color on page load
@@ -198,6 +311,217 @@
         var chemistrySection = document.getElementById("chemistry-section");
         chemistrySection.classList.toggle("active");
       }
+      // Function to toggle the visibility of the thyroid compartment
+function toggleThyroid() {
+  const thyroidCompartment = document.getElementById('thyroid-compartment');
+  
+  // Toggle display between 'none' and 'block'
+  if (thyroidCompartment.style.display === 'none' || thyroidCompartment.style.display === '') {
+    thyroidCompartment.style.display = 'block';
+  } else {
+    thyroidCompartment.style.display = 'none';
+  }
+}
+
+// Add the existing thyroid calculation functions (e.g., updateThyroidCalculation_1) here...
+function updateThyroidCalculation_1() {
+    const baseT4 = parseFloat(document.getElementById('base-t4').value) || 0;
+    const targetT4 = parseFloat(document.getElementById('target-t4').value) || 0;
+    const concentrationT4 = parseFloat(document.getElementById('concentration-t4').value) || 0;
+    const volume = parseFloat(document.getElementById('volume-1').value) || 0;
+
+    // Calculate difference
+    const differenceT4 = targetT4 - baseT4;
+    document.getElementById('difference-t4').innerText = differenceT4.toFixed(2);
+
+    // Calculate required amount
+    const requiredAmountT4 = (differenceT4 * volume) / 100;
+    document.getElementById('required-amount-t4').innerText = requiredAmountT4.toFixed(2);
+
+    // Calculate volume required
+    const volumeRequiredT4 = requiredAmountT4 / concentrationT4;
+    document.getElementById('volume-required-t4').innerText = isFinite(volumeRequiredT4) ? volumeRequiredT4.toFixed(2) : '0.00';
+  }
+  function updateThyroidCalculation_2() {
+    const baseT3 = parseFloat(document.getElementById('base-t3').value) || 0;
+    const targetT3 = parseFloat(document.getElementById('target-t3').value) || 0;
+    const concentrationT3 = parseFloat(document.getElementById('concentration-t3').value) || 0;
+    const volume = parseFloat(document.getElementById('volume-1').value) || 0;
+
+    // Calculate difference
+    const differenceT3 = targetT3 - baseT3;
+    document.getElementById('difference-t3').innerText = differenceT3.toFixed(2);
+
+    // Calculate required amount
+    const requiredAmountT3 = (differenceT3 * volume) / 100;
+    document.getElementById('required-amount-t3').innerText = requiredAmountT3.toFixed(2);
+
+    // Calculate volume required
+    const volumeRequiredT3 = requiredAmountT3 / concentrationT3;
+    document.getElementById('volume-required-t3').innerText = isFinite(volumeRequiredT3) ? volumeRequiredT3.toFixed(2) : '0.00';
+  }
+  function updateThyroidCalculation_3() {
+    const baseTSH = parseFloat(document.getElementById('base-tsh').value) || 0;
+    const targetTSH = parseFloat(document.getElementById('target-tsh').value) || 0;
+    const concentrationTSH = parseFloat(document.getElementById('concentration-tsh').value) || 0;
+    const volume = parseFloat(document.getElementById('volume-1').value) || 0;
+
+    // Calculate difference
+    const differenceTSH = targetTSH - baseTSH;
+    document.getElementById('difference-tsh').innerText = differenceTSH.toFixed(2);
+
+    // Calculate required amount
+    const requiredAmountTSH = (differenceTSH * volume) ;
+    document.getElementById('required-amount-tsh').innerText = requiredAmountTSH.toFixed(2);
+
+    // Calculate volume required
+    const volumeRequiredTSH = requiredAmountTSH / concentrationTSH;
+    document.getElementById('volume-required-tsh').innerText = isFinite(volumeRequiredTSH) ? volumeRequiredTSH.toFixed(2) : '0.00';
+  }
+
+  function updateThyroidCalculation_4() {
+    const baseCortisol = parseFloat(document.getElementById('base-cor').value) || 0;
+    const targetCortisol = parseFloat(document.getElementById('target-cor').value) || 0;
+    const concentrationCortisol = parseFloat(document.getElementById('concentration-cor').value) || 0;
+    const volume = parseFloat(document.getElementById('volume-1').value) || 0;
+
+    // Calculate difference
+    const differenceCortisol = targetCortisol - baseCortisol;
+    document.getElementById('difference-cor').innerText = differenceCortisol.toFixed(2);
+
+    // Calculate required amount
+    const requiredAmountCortisol = (differenceCortisol * volume) / 100;
+    document.getElementById('required-amount-cor').innerText = requiredAmountCortisol.toFixed(2);
+
+    // Calculate volume required
+    const volumeRequiredCortisol = requiredAmountCortisol / concentrationCortisol;
+    document.getElementById('volume-required-cor').innerText = isFinite(volumeRequiredCortisol) ? volumeRequiredCortisol.toFixed(2) : '0.00';
+  }
+  function toggleReproductive() {
+  var compartment = document.getElementById("reproductive-compartment");
+  if (compartment.style.display === "none" || compartment.style.display === "") {
+    compartment.style.display = "block";
+  } else {
+    compartment.style.display = "none";
+  }
+}
+
+function updateReproductiveCalculation() {
+    const volume = parseFloat(document.getElementById('volume-2').value);
+
+    // LH Calculation
+    updateReproductiveCalculation_1(volume);
+    // FSH Calculation
+    updateReproductiveCalculation_2(volume);
+    // Testosterone Calculation
+    updateReproductiveCalculation_3(volume);
+    // Prolactin Calculation
+    updateReproductiveCalculation_4(volume);
+    // β HCG Calculation
+    updateReproductiveCalculation_5(volume);
+    // Estradiol Calculation
+    updateReproductiveCalculation_6(volume);
+    // Progesterone Calculation
+    updateReproductiveCalculation_7(volume);
+}
+
+function updateReproductiveCalculation_1(volume) {
+    const target = parseFloat(document.getElementById('target-lh').value);
+    const base = parseFloat(document.getElementById('base-lh').value);
+    const concentration = parseFloat(document.getElementById('concentration-lh').value);
+
+    const difference = target - base;
+    const requirement = difference * volume / 1000;
+    const volumeRequired = requirement / concentration;
+
+    document.getElementById('difference-lh').innerText = difference.toFixed(2);
+    document.getElementById('required-amount-lh').innerText = requirement.toFixed(2);
+    document.getElementById('volume-required-lh').innerText = volumeRequired.toFixed(2);
+}
+
+function updateReproductiveCalculation_2(volume) {
+    const target = parseFloat(document.getElementById('target-fsh').value);
+    const base = parseFloat(document.getElementById('base-fsh').value);
+    const concentration = parseFloat(document.getElementById('concentration-fsh').value);
+
+    const difference = target - base;
+    const requirement = difference * volume / 1000;
+    const volumeRequired = requirement / concentration;
+
+    document.getElementById('difference-fsh').innerText = difference.toFixed(2);
+    document.getElementById('required-amount-fsh').innerText = requirement.toFixed(2);
+    document.getElementById('volume-required-fsh').innerText = volumeRequired.toFixed(2);
+}
+
+function updateReproductiveCalculation_3(volume) {
+    const target = parseFloat(document.getElementById('target-test').value);
+    const base = parseFloat(document.getElementById('base-test').value);
+    const concentration = parseFloat(document.getElementById('concentration-test').value);
+
+    const difference = target - base;
+    const requirement = difference * volume / 100;
+    const volumeRequired = requirement / concentration;
+
+    document.getElementById('difference-test').innerText = difference.toFixed(2);
+    document.getElementById('required-amount-test').innerText = requirement.toFixed(2);
+    document.getElementById('volume-required-test').innerText = volumeRequired.toFixed(2);
+}
+
+function updateReproductiveCalculation_4(volume) {
+    const target = parseFloat(document.getElementById('target-prl').value);
+    const base = parseFloat(document.getElementById('base-prl').value);
+    const concentration = parseFloat(document.getElementById('concentration-prl').value);
+
+    const difference = target - base;
+    const requirement = difference * volume / 1000;
+    const volumeRequired = requirement / concentration;
+
+    document.getElementById('difference-prl').innerText = difference.toFixed(2);
+    document.getElementById('required-amount-prl').innerText = requirement.toFixed(2);
+    document.getElementById('volume-required-prl').innerText = volumeRequired.toFixed(2);
+}
+
+function updateReproductiveCalculation_5(volume) {
+    const target = parseFloat(document.getElementById('target-hcg').value);
+    const base = parseFloat(document.getElementById('base-hcg').value);
+    const concentration = parseFloat(document.getElementById('concentration-hcg').value);
+
+    const difference = target - base;
+    const requirement = difference * volume / 1000;
+    const volumeRequired = requirement / concentration;
+
+    document.getElementById('difference-hcg').innerText = difference.toFixed(2);
+    document.getElementById('required-amount-hcg').innerText = requirement.toFixed(2);
+    document.getElementById('volume-required-hcg').innerText = volumeRequired.toFixed(2);
+}
+
+function updateReproductiveCalculation_6(volume) {
+    const target = parseFloat(document.getElementById('target-e2').value);
+    const base = parseFloat(document.getElementById('base-e2').value);
+    const concentration = parseFloat(document.getElementById('concentration-e2').value);
+
+    const difference = target - base;
+    const requirement = difference * volume ;
+    const volumeRequired = requirement / concentration;
+
+    document.getElementById('difference-e2').innerText = difference.toFixed(2);
+    document.getElementById('required-amount-e2').innerText = requirement.toFixed(2);
+    document.getElementById('volume-required-e2').innerText = volumeRequired.toFixed(2);
+}
+
+function updateReproductiveCalculation_7(volume) {
+    const target = parseFloat(document.getElementById('target-p4').value);
+    const base = parseFloat(document.getElementById('base-p4').value);
+    const concentration = parseFloat(document.getElementById('concentration-4').value);
+
+    const difference = target - base;
+    const requirement = difference * volume ;
+    const volumeRequired = requirement / concentration;
+
+    document.getElementById('difference-p4').innerText = difference.toFixed(2);
+    document.getElementById('required-amount-p4').innerText = requirement.toFixed(2);
+    document.getElementById('volume-required-p4').innerText = volumeRequired.toFixed(2);
+}
 
       function updateCalculations() {
         var volume = parseFloat(document.getElementById("volume").value) || 0;
@@ -227,9 +551,7 @@
         window.onload = function() {
               document.getElementById('chemistry-section').style.display = 'block'; // Open Chemistry by default
           }
-
-
-          function printTables() {
+  function printTables() {
       // Hide elements that are not tables
       document.querySelectorAll('.compartment').forEach(function(compartment) {
           compartment.style.display = 'none';
@@ -242,10 +564,7 @@
       document.querySelectorAll('.compartment').forEach(function(compartment) {
           compartment.style.display = 'block';
       });
-  }
-
-
-
+  }  
       function updateDoubleSaltCalculations() {
         var base = parseFloat(document.getElementById("base-salt").value) || 0;
         var target =
@@ -521,6 +840,7 @@ function updateEnzymeCalculations_4() {
                 compartment.style.display = 'block';
             });
         }
+   
     </script>
   <body>
     <div class="container">
@@ -725,7 +1045,7 @@ function updateEnzymeCalculations_4() {
           </table>
           <!-- Double Salts Section -->
           <div class="double-salts-section">
-            <h2>Double Salts</h2>
+            <h3>Double Salts</h3>
             <h3>
               {Salt: MgSO4.7H2O}. {Molecular Weight: 246.5}. {Analyte Atomic
               Weight:24.3}
@@ -957,9 +1277,9 @@ function updateEnzymeCalculations_4() {
     </div>
     <!--fifth Double Salts Section -->
     <div class="double-salts-section">
-        <h3>
+        <h2>
           {Salt: KCL}. {Molecular Weight: 74.55}
-        </h3>
+        </h2>
         <table>
           <tr>
             <th>Sl. No.</th>
@@ -1274,8 +1594,313 @@ function updateEnzymeCalculations_4() {
               </div>
         </div>      
         <!-- Additional compartments -->
-        <div class="compartment">Thyroid Hormones</div>
-        <div class="compartment">Reproductive Hormones</div>
+        <div class="compartment" onclick="toggleThyroid()">Thyroid Hormones</div>
+      <div id="thyroid-compartment" class="compartment-content" >
+        <div class="volume-section-thyroid">
+          <label for="volume-1">Volume (ml):</label>
+          <input
+            type="number"
+            id="volume-1"
+            value="0"
+            step="100"
+            oninput="updateThyroidCalculation()"
+          />
+        </div>
+        <table>
+          <tr>
+            <th>Sl.no</th>
+            <th>Analyte</th>
+            <th>Reporting Unit</th>
+            <th>Base</th>
+            <th>Target</th>
+            <th>Difference</th>
+            <th>Required Amount</th>
+            <th>Concentration of Spiking Material</th>
+            <th>Unit</th>
+            <th>Volume Required</th>
+            <th>UNIT</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>T4 (Thyroxine)</td>
+            <td>μg/dL</td>
+            <td><input type="number"
+            id="base-t4"
+            step="0.1"
+            oninput="updateThyroidCalculation_1()"></td>
+            <td>
+              <input type="number"
+              id="target-t4"
+              step="0.1"
+              oninput="updateThyroidCalculation_1()">
+            </td>
+            <td id="difference-t4">0.00</td>
+            <td id="required-amount-t4">0.00</td>
+            <td>
+              <input type="number"
+              id="concentration-t4"
+              step="0.1"
+              oninput="updateThyroidCalculation_1()"></td>
+            <td>μg/mL</td>
+            <td id="volume-required-t4">0.00</td>
+            <td>mL</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>T3 (Triiodothyronine)</td>
+            <td>ng/dL</td>
+            <td><input type="number"
+              id="base-t3"
+              step="0.1"
+              oninput="updateThyroidCalculation_2()"></td>
+              <td><input type="number"
+                id="target-t3"
+                step="0.1"
+                oninput="updateThyroidCalculation_2()"></td>
+                <td id="difference-t3">0.00</td>
+                <td id="required-amount-t3">0.00</td>
+                <td><input type="number"
+                  id="concentration-t3"
+                  step="0.1"
+                  oninput="updateThyroidCalculation_2()"></td>
+                  <td>ng/μL</td>
+                  <td id="volume-required-t3">0.00</td>
+                  <td>μL</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>TSH</td>
+            <td>μIU/mL</td>
+            <td><input type="number"
+              id="base-tsh"
+              step="0.1"
+              oninput="updateThyroidCalculation_3()"></td>
+              <td><input type="number"
+                id="target-tsh"
+                step="0.1"
+                oninput="updateThyroidCalculation_3()"></td>
+                <td id="difference-tsh">0.00</td>
+                <td id="required-amount-tsh">0.00</td>
+                <td><input type="number"
+                  id="concentration-tsh"
+                  step="0.1"
+                  oninput="updateThyroidCalculation_3()"></td>
+                  <td>μIU/μL</td>
+                  <td id="volume-required-tsh">0.00</td>
+                  <td>μL</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Cortisol</td>
+            <td>μg/dL</td>
+            <td><input type="number"
+              id="base-cor"
+              step="0.1"
+              oninput="updateThyroidCalculation_4()"></td>
+              <td><input type="number"
+                id="target-cor"
+                step="0.1"
+                oninput="updateThyroidCalculation_4()"></td>
+                <td id="difference-cor">0.00</td>
+                <td id="required-amount-cor">0.00</td>
+                <td><input type="number"
+                  id="concentration-cor"
+                  step="0.1"
+                  oninput="updateThyroidCalculation_4()"></td>
+                  <td>μg/mL</td>
+                  <td id="volume-required-cor">0.00</td>
+                  <td>mL</td>
+          </tr>
+        </table>
+        <button class="print-btn no-print" onclick="printTables()">Print Table</button></div>
+      </div>
+      <div class="compartment" onclick="toggleReproductive()">Reproductive Hormones</div>
+      <div id="reproductive-compartment" class="compartment-content" >
+        <div class="volume-section-reproductive">
+          <label for="volume-2">Volume (ml):</label>
+          <input
+            type="number"
+            id="volume-2"
+            value="0"
+            step="100"
+            oninput="updateReproductiveCalculation()"
+          /></div>
+          <table>
+            <tr>
+              <th>Sl.no</th>
+              <th>Analyte</th>
+              <th>Reporting Unit</th>
+              <th>Base</th>
+              <th>Target</th>
+              <th>Difference</th>
+              <th>Requirement for total volume</th>
+              <th>Concentration of Spiking Material</th>
+              <th>Unit</th>
+              <th>Volume Required</th>
+              <th>UNIT</th>
+                </tr>
+            <tr>
+              <td>1</td>
+              <td>LH</td>
+              <td>mIU/mL</td>
+              <td><input type="number"
+              id="base-lh"
+              step="0.1"
+              oninput="updateReproductiveCalculation_1()"></td>
+              <td>
+                <input type="number"
+                id="target-lh"
+                step="0.1"
+                oninput="updateReproductiveCalculation_1()">
+              </td>
+              <td id="difference-lh">0.00</td>
+              <td id="required-amount-lh">0.00</td>
+              <td>
+                <input type="number"
+                id="concentration-lh"
+                step="0.1"
+                oninput="updateReproductiveCalculation_1()"></td>
+              <td>mIU/μL</td>
+              <td id="volume-required-lh">0.00</td>
+              <td>μL</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>FSH</td>
+              <td>mIU/mL</td>
+              <td><input type="number"
+                id="base-fsh"
+                step="0.1"
+                oninput="updateReproductiveCalculation_2()"></td>
+                <td><input type="number"
+                  id="target-fsh"
+                  step="0.1"
+                  oninput="updateReproductiveCalculation_2()"></td>
+                  <td id="difference-fsh">0.00</td>
+                  <td id="required-amount-fsh">0.00</td>
+                  <td><input type="number"
+                    id="concentration-fsh"
+                    step="0.1"
+                    oninput="updateReproductiveCalculation_2()"></td>
+                    <td>mIU/μL</td>
+                    <td id="volume-required-fsh">0.00</td>
+                    <td>μL</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Testosterone</td>
+              <td>ng/dL</td>
+              <td><input type="number"
+                id="base-test"
+                step="0.1"
+                oninput="updateReproductiveCalculation_3()"></td>
+                <td><input type="number"
+                  id="target-test"
+                  step="0.1"
+                  oninput="updateReproductiveCalculation_3()"></td>
+                  <td id="difference-test">0.00</td>
+                  <td id="required-amount-test">0.00</td>
+                  <td><input type="number"
+                    id="concentration-test"
+                    step="0.1"
+                    oninput="updateReproductiveCalculation_3()"></td>
+                    <td>ng/μL</td>
+                    <td id="volume-required-test">0.00</td>
+                    <td>μL</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Prolactin</td>
+              <td>ng/mL</td>
+              <td><input type="number"
+                id="base-prl"
+                step="0.1"
+                oninput="updateReproductiveCalculation_4()"></td>
+                <td><input type="number"
+                  id="target-prl"
+                  step="0.1"
+                  oninput="updateReproductiveCalculation_4()"></td>
+                  <td id="difference-prl">0.00</td>
+                  <td id="required-amount-prl">0.00</td>
+                  <td><input type="number"
+                    id="concentration-prl"
+                    step="0.1"
+                    oninput="updateReproductiveCalculation_4()"></td>
+                    <td>ng/μL</td>
+                    <td id="volume-required-prl">0.00</td>
+                    <td>μL</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>β HCG</td>
+              <td>mIU/mL</td>
+              <td><input type="number"
+                id="base-hcg"
+                step="0.1"
+                oninput="updateReproductiveCalculation_5()"></td>
+                <td><input type="number"
+                  id="target-hcg"
+                  step="0.1"
+                  oninput="updateReproductiveCalculation_5()"></td>
+                  <td id="difference-hcg">0.00</td>
+                  <td id="required-amount-hcg">0.00</td>
+                  <td><input type="number"
+                    id="concentration-hcg"
+                    step="0.1"
+                    oninput="updateReproductiveCalculation_5()"></td>
+                    <td>mIU/μL</td>
+                    <td id="volume-required-hcg">0.00</td>
+                    <td>μL</td>
+            </tr> 
+            <tr> 
+              <td>6</td>
+              <td>Estradiol</td>
+              <td>pmol/L</td>
+              <td><input type="number"
+                id="base-e2"
+                step="0.1"
+                oninput="updateReproductiveCalculation_6()"></td>
+                <td><input type="number"
+                  id="target-e2"
+                  step="0.1"
+                  oninput="updateReproductiveCalculation_6()"></td>
+                  <td id="difference-e2">0.00</td>
+                  <td id="required-amount-e2">0.00</td>
+                  <td><input type="number"
+                    id="concentration-e2"
+                    step="0.1"
+                    oninput="updateReproductiveCalculation_6()"></td>
+                    <td>pmol/μL</td>
+                    <td id="volume-required-e2">0.00</td>
+                    <td>μL</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Progesterone</td>
+              <td>nmol/L</td>
+              <td><input type="number"
+                id="base-p4"
+                step="0.1"
+                oninput="updateReproductiveCalculation_7()"></td>
+                <td><input type="number"
+                  id="target-p4"
+                  step="0.1"
+                  oninput="updateReproductiveCalculation_7()"></td>
+                  <td id="difference-p4">0.00</td>
+                  <td id="required-amount-p4">0.00</td>
+                  <td><input type="number"
+                    id="concentration-4"
+                    step="0.1"
+                    oninput="updateReproductiveCalculation_7()"></td>
+                    <td>nmol/μL</td>
+                    <td id="volume-required-p4">0.00</td>
+                    <td>μL</td>
+            </tr>
+          </table>
+          <button class="print-btn no-print" onclick="printTables()">Print Table</button></div>
+      </div>
+    </div>
+
         <div class="compartment">Tumour Markers</div>
         <div class="compartment">Down Screening Markers</div>
         <div class="compartment">Cardiac Markers</div>
