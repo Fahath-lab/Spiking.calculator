@@ -6,8 +6,8 @@
     <title>SPIKING CALCULATOR</title>
     <style>
       body {
-        margin: 0;
-        font-family: "Georgia", serif; /* Elegant font */
+        margin: 30px;
+        font-family: "Century Gothic", serif; /* Elegant font */
         color: #333;
       }
 
@@ -51,7 +51,7 @@ th, td {
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: #fefffe;
 }
 
 /* Style for the volume section */
@@ -83,7 +83,7 @@ input[type="number"]::-webkit-outer-spin-button {
       .excel-table,
       .double-salts-section {
         display: none;
-        margin: 20px auto;
+        margin: 20px;
         width: 100%;
         border-collapse: collapse;
       }
@@ -92,7 +92,7 @@ input[type="number"]::-webkit-outer-spin-button {
       .excel-table td,
       .double-salts-section th,
       .double-salts-section td {
-        border: 1px solid #999;
+        border: 5px solid #999;
         padding: 10px;
         text-align: center;
       }
@@ -142,7 +142,7 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.6s ease;
 }
 
 .print-btn:hover {
@@ -267,29 +267,31 @@ input[type="number"] {
 .compartment-content.active {
   display: block; /* Show content when toggled */
 }
-
-</style>
-    <script>
-      // Login protection
-function checkLogin() {
-    var userId = prompt("Enter Login ID:");
-    var password = prompt("Enter Password:");
-
-    // Add multiple valid login credentials
-    if (
-        (userId === "KMF" && password === "fazil") ||   // First login ID and password
-        (userId === "EQAS" && password === "bioch")  // Second login ID and password
-    ) {
-        alert("Login successful!");
-    } else {
-        alert("Invalid login. Please refresh and try again.");
-        document.body.innerHTML = "";  // Clear the page content if login fails
-    }
-      
+#urinechemistry-compartment {
+  display: none; /* Initially hidden */
+  margin-top: 10px;
+}
+#urine-chemistry-section.active .excel-table-urine,
+      #urine-chemistry-section.active .volume-section-urinechemistry,
+      #urine-chemistry-section.active .urine-double-salts-section-1,
+      #urine-chemistry-section.active .urine-double-salts-section-2
+       {
+        display: block;
       }
 
-      // Trigger login prompt on page load
-      window.onload = checkLogin;
+.volume-section-urinechemistry {
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 10px;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+}
+#urinechemistry-compartment {
+  display: none; /* Initially hidden */
+  margin-top: 10px;
+}
+</style>
+    <script>
       // Random background color on page load
       document.addEventListener("DOMContentLoaded", function () {
         var colors = [
@@ -303,6 +305,32 @@ function checkLogin() {
           "#EE82EE",
           "#B0C4DE",
           "#FF69B4",
+          "#FF6F61",
+          "#ffcc00",
+          "#1e90ff",
+          "#ff4500",
+          "#32cd32",
+          "#ba55d3",
+          "#ff1493",
+          "#00ced1",
+          "#ff8c00",
+          "#8a2be2",
+          "#ff6347",
+          "#7fff00",
+          "#ff69b4",
+"#00fa9a",
+"#ff4500",
+"#40e0d0",
+"#ee82ee",
+"#dc143c",
+"#00ff7f",
+"#ff1493",
+"#ffb6c1",
+"#7b68ee",
+"#ff6347",
+"#66cdaa"
+
+        
         ];
         var usedColors = [];
         function getRandomColor() {
@@ -331,6 +359,131 @@ function checkLogin() {
         var chemistrySection = document.getElementById("chemistry-section");
         chemistrySection.classList.toggle("active");
       }
+      function toggleDownScreening() {
+  var compartment = document.getElementById("downscreening-compartment");
+  if (compartment.style.display === "none" || compartment.style.display === "") {
+    compartment.style.display = "block";
+  } else {
+    compartment.style.display = "none";
+  }
+}
+
+      function toggleTumourMarker() {
+  var compartment = document.getElementById("tumourmarker-compartment");
+  if (compartment.style.display === "none" || compartment.style.display === "") {
+    compartment.style.display = "block";
+  } else {
+    compartment.style.display = "none";
+  }
+}
+      // Update calculation for AFP
+function updateTMCalculation_1() {
+  const baseAFP = parseFloat(document.getElementById("base-afptm").value) || 0;
+  const targetAFP = parseFloat(document.getElementById("target-afptm").value) || 0;
+  const concentrationAFP = parseFloat(document.getElementById("conc-afptm").value) || 0;
+  const volumeAFP = parseFloat(document.getElementById("volume-5").value) || 0;
+
+  // Calculate difference
+  const differenceAFP = targetAFP - baseAFP;
+  document.getElementById("difference-afptm").textContent = differenceAFP.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredAFP = differenceAFP * volumeAFP / 100;
+  document.getElementById("amount-required-afptm").textContent = amountRequiredAFP.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredAFP = amountRequiredAFP / concentrationAFP;
+  document.getElementById("volume-required-afptm").textContent = volumeRequiredAFP.toFixed(2);
+}
+
+// Update calculation for Total Beta HCG
+function updateTMCalculation_2() {
+  const baseHCG = parseFloat(document.getElementById("base-hcg").value) || 0;
+  const targetHCG = parseFloat(document.getElementById("target-hcg").value) || 0;
+  const concentrationHCG = parseFloat(document.getElementById("conc-hcg").value) || 0;
+  const volumeHCG = parseFloat(document.getElementById("volume-5").value) || 0;
+
+  // Calculate difference
+  const differenceHCG = targetHCG - baseHCG;
+  document.getElementById("difference-hcg").textContent = differenceHCG.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredHCG = differenceHCG * volumeHCG / 100;
+  document.getElementById("amount-required-hcg").textContent = amountRequiredHCG.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredHCG = amountRequiredHCG / concentrationHCG;
+  document.getElementById("volume-required-hcg").textContent = volumeRequiredHCG.toFixed(2);
+}
+
+// Update calculation for Total PSA
+function updateTMCalculation_3() {
+  const basePSA = parseFloat(document.getElementById("base-psa").value) || 0;
+  const targetPSA = parseFloat(document.getElementById("target-psa").value) || 0;
+  const concentrationPSA = parseFloat(document.getElementById("conc-psa").value) || 0;
+  const volumePSA = parseFloat(document.getElementById("volume-5").value) || 0;
+
+  // Calculate difference
+  const differencePSA = targetPSA - basePSA;
+  document.getElementById("difference-psa").textContent = differencePSA.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredPSA = differencePSA * volumePSA / 100;
+  document.getElementById("amount-required-psa").textContent = amountRequiredPSA.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredPSA = amountRequiredPSA / concentrationPSA;
+  document.getElementById("volume-required-psa").textContent = volumeRequiredPSA.toFixed(2);
+}
+
+      function toggleUrineProtein() {
+  var compartment = document.getElementById("urineprotein-compartment");
+  if (compartment.style.display === "none" || compartment.style.display === "") {
+    compartment.style.display = "block";
+  } else {
+    compartment.style.display = "none";
+  }
+}
+      // Update calculation for Ur Microalbumin
+function updateUmpCalculation_1() {
+  const baseUM = parseFloat(document.getElementById("base-um").value) || 0;
+  const targetUM = parseFloat(document.getElementById("target-um").value) || 0;
+  const concentrationUM = parseFloat(document.getElementById("conc-um").value) || 0;
+  const volumeUM = parseFloat(document.getElementById("volume-4").value) || 0;
+
+  // Calculate difference
+  const differenceUM = targetUM - baseUM;
+  document.getElementById("difference-um").textContent = differenceUM.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredUM = differenceUM * volumeUM / 1000;
+  document.getElementById("amount-required-um").textContent = amountRequiredUM.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredUM = amountRequiredUM / concentrationUM;
+  document.getElementById("volume-required-um").textContent = volumeRequiredUM.toFixed(2);
+}
+
+// Update calculation for Ur Protein
+function updateUmpCalculation_2() {
+  const baseUP = parseFloat(document.getElementById("base-up").value) || 0;
+  const targetUP = parseFloat(document.getElementById("target-up").value) || 0;
+  const concentrationUP = parseFloat(document.getElementById("conc-up").value) || 0;
+  const volumeUP = parseFloat(document.getElementById("volume-4").value) || 0;
+
+  // Calculate difference
+  const differenceUP = targetUP - baseUP;
+  document.getElementById("difference-up").textContent = differenceUP.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredUP = differenceUP * volumeUP / 100;
+  document.getElementById("amount-required-up").textContent = amountRequiredUP.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredUP = amountRequiredUP / concentrationUP;
+  document.getElementById("volume-required-up").textContent = volumeRequiredUP.toFixed(2);
+}
+
       // Function to toggle the visibility of the thyroid compartment
 function toggleThyroid() {
   const thyroidCompartment = document.getElementById('thyroid-compartment');
@@ -543,6 +696,139 @@ function updateReproductiveCalculation_7(volume) {
     document.getElementById('volume-required-p4').innerText = volumeRequired.toFixed(2);
 }
 
+function toggleUrineChemistry() {
+  const urinechemistryCompartment = document.getElementById('urinechemistry-compartment');
+  
+  // Toggle display between 'none' and 'block'
+  if (urinechemistryCompartment.style.display === 'none' || urinechemistryCompartment.style.display === '') {
+    urinechemistryCompartment.style.display = 'block';
+  } else {
+    urinechemistryCompartment.style.display = 'none';
+  }
+}
+// Function to update urine chemistry table calculations
+function updateUrineCalculations_0() {
+  // Volume for urine chemistry
+  const volume = parseFloat(document.getElementById("volume-3").value);
+
+  // Analytes: Urine Urea
+  const baseUr = parseFloat(document.getElementById("base-ur").value);
+  const targetUr = parseFloat(document.getElementById("target-ur").value);
+  const differenceUr = targetUr - baseUr;
+  const requiredUrMg = (differenceUr * volume) / 100;
+  const requiredUrGms = requiredUrMg / 1000;
+
+  // Set values in table for Urine Urea
+  document.getElementById("difference-ur").innerText = differenceUr.toFixed(2);
+  document.getElementById("required-ur").innerText = requiredUrMg.toFixed(2);
+  document.getElementById("required_gms-ur").innerText = requiredUrGms.toFixed(3);
+}
+
+function updateUrineCalculations_1() {
+  // Analytes: Urine Creatinine
+  const baseCr = parseFloat(document.getElementById("base-cr").value);
+  const targetCr = parseFloat(document.getElementById("target-cr").value);
+  const differenceCr = targetCr - baseCr;
+  const requiredCrMg = (differenceCr * volume) / 100;
+  const requiredCrGms = requiredCrMg / 1000;
+
+  // Set values in table for Urine Creatinine
+  document.getElementById("difference-cr").innerText = differenceCr.toFixed(2);
+  document.getElementById("required-cr").innerText = requiredCrMg.toFixed(2);
+  document.getElementById("required_gms-cr").innerText = requiredCrGms.toFixed(3);
+}
+
+function updateUrineCalculations_2() {
+  // Analytes: Urine Calcium
+  const baseCa = parseFloat(document.getElementById("base-ca").value);
+  const targetCa = parseFloat(document.getElementById("target-ca").value);
+  const differenceCa = targetCa - baseCa;
+  const requiredCaMg = (differenceCa * volume) / 100;
+  const requiredCaGms = requiredCaMg / 1000;
+
+  // Set values in table for Urine Calcium
+  document.getElementById("difference-ca").innerText = differenceCa.toFixed(2);
+  document.getElementById("required-ca").innerText = requiredCaMg.toFixed(2);
+  document.getElementById("required_gms-ca").innerText = requiredCaGms.toFixed(3);
+}
+
+function updateUrineCalculations_3() {
+  // Analytes: Urine Phosphorus
+  const basePh = parseFloat(document.getElementById("base-ph").value);
+  const targetPh = parseFloat(document.getElementById("target-ph").value);
+  const differencePh = targetPh - basePh;
+  const requiredPhMg = (differencePh * volume) / 100;
+  const requiredPhGms = requiredPhMg / 1000;
+
+  // Set values in table for Urine Phosphorus
+  document.getElementById("difference-ph").innerText = differencePh.toFixed(2);
+  document.getElementById("required-ph").innerText = requiredPhMg.toFixed(2);
+  document.getElementById("required_gms-ph").innerText = requiredPhGms.toFixed(3);
+}
+
+function updateUrineCalculations_4() {
+  // Analytes: Urine Uric Acid
+  const baseUa = parseFloat(document.getElementById("base-ua").value);
+  const targetUa = parseFloat(document.getElementById("target-ua").value);
+  const differenceUa = targetUa - baseUa;
+  const requiredUaMg = (differenceUa * volume) / 100;
+  const requiredUaGms = requiredUaMg / 1000;
+
+  // Set values in table for Urine Uric Acid
+  document.getElementById("difference-ua").innerText = differenceUa.toFixed(2);
+  document.getElementById("required-ua").innerText = requiredUaMg.toFixed(2);
+  document.getElementById("required_gms-ua").innerText = requiredUaGms.toFixed(3);
+}
+
+// Function to update double salts section calculations for NaHCO3
+function updateUrineCalculations_5() {
+  // Volume for double salts
+  const volume = parseFloat(document.getElementById("volume-3").value);
+
+  // Analytes: Sodium
+  const baseNa = parseFloat(document.getElementById("base-na").value);
+  const targetNa = parseFloat(document.getElementById("target-na").value);
+  const differenceNa = baseNa - targetNa;
+  const mmolsRequiredNa = (differenceNa * volume) / 1000;
+  const amountRequiredMgNa = mmolsRequiredNa * 84;
+  const amountRequiredGmsNa = amountRequiredMgNa / 1000;
+
+  // Set values in table for Sodium
+  document.getElementById("difference-na").innerText = differenceNa.toFixed(2);
+  document.getElementById("mmols-required-na").innerText = mmolsRequiredNa.toFixed(2);
+  document.getElementById("amount-required-mg-na").innerText = amountRequiredMgNa.toFixed(2);
+  document.getElementById("amount-required-gms-na").innerText = amountRequiredGmsNa.toFixed(3);
+}
+
+// Function to update double salts section calculations for KCL
+function updateUrineCalculations_6() {
+  // Analytes: Potassium
+  const baseK = parseFloat(document.getElementById("base-k").value);
+  const targetK = parseFloat(document.getElementById("target-k").value);
+  const differenceK = baseK - targetK;
+  const mmolsRequiredK = (differenceK * volume) / 1000;
+  const amountRequiredMgK = mmolsRequiredK * 74.55;
+  const amountRequiredGmsK = amountRequiredMgK / 1000;
+
+  // Set values in table for Potassium
+  document.getElementById("difference-k").innerText = differenceK.toFixed(2);
+  document.getElementById("mmols-required-k").innerText = mmolsRequiredK.toFixed(2);
+  document.getElementById("amount-required-k").innerText = amountRequiredMgK.toFixed(2);
+  document.getElementById("amount-required-gms-k").innerText = amountRequiredGmsK.toFixed(3);
+}
+
+// Trigger update for all sections when volume changes
+function updateUrineCalculations_0() {
+  updateUrineCalculations_();
+  updateUrineCalculations_1();
+  updateUrineCalculations_2();
+  updateUrineCalculations_3();
+  updateUrineCalculations_4();
+  updateUrineCalculations_5();
+  updateUrineCalculations_6();
+}
+
+
       function updateCalculations() {
         var volume = parseFloat(document.getElementById("volume").value) || 0;
         if (!volume || isNaN(volume) || volume == 0) {
@@ -550,7 +836,6 @@ function updateReproductiveCalculation_7(volume) {
     return;
   }
 
-        
 
         for (var i = 1; i <= 6; i++) {
           var baseValue =
@@ -1486,6 +1771,13 @@ function updateEnzymeCalculations_4() {
                    <td id="enz-act-3">0.00</td>
                   <td id="u/ul-3">0.00</td>
                   </tr>
+                  <tr>
+                    <td>19</td>
+                    <td>Triglyceride</td>
+                    <td>Concentration<td>
+                      <td>=</td>
+                    <td>10,400 mg/mL</td>
+                  </tr>
                   
                 </table></div>
         <!--Eighth Double Salts Section -->
@@ -1582,7 +1874,6 @@ function updateEnzymeCalculations_4() {
                 <th>Target</th>
                 <th>Difference</th>
                 <th>Amount Required (mg)</th>
-                <th>Concentration</th>
                 <th>Volume Required (ml)</th>
               </tr>
 
@@ -1920,12 +2211,488 @@ function updateEnzymeCalculations_4() {
           <button class="print-btn no-print" onclick="printTables()">Print Table</button></div>
       </div>
     </div>
+        <div class="compartment" onclick="toggleUrineChemistry()">Urine Chemistry</div>
+        <div id="urinechemistry-compartment" class="compartment-content" >
+        
+        <div id="urine-chemistry-section">
+          <div class="volume-section-urinechemistry">
+            <label for="volume-3">Volume (ml):</label>
+            <input
+              type="number"
+              id="volume-3"
+              value="0"
+              step="100"
+              oninput="updateUrineCalculations_0()"
+            />
+          </div>
+          <table class="excel-table-urine">
+            <tr>
+              <th>Sl. No.</th>
+              <th>Analytes</th>
+              <th>Base Value</th>
+              <th>Target Value</th>
+              <th>Difference</th>
+              <th>Required Amount (mg)</th>
+              <th>Required Amount (gms)</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ur Urea</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-ur"
+                  step="0.1"
+                  oninput="updateUrineCalculations_()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-ur"
+                  step="0.1"
+                  oninput="updateUrineCalculations_()"
+                />
+              </td>
+              <td id="difference-ur">0.00</td>
+              <td id="required-ur">0.00</td>
+              <td id="required_gms-ur">0.000</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Ur Creatinine</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-cr"
+                  step="0.1"
+                  oninput="updateUrineCalculations_1()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-cr"
+                  step="0.1"
+                  oninput="updateUrineCalculations_1()"
+                />
+              </td>
+              <td id="difference-cr">0.00</td>
+              <td id="required-cr">0.00</td>
+              <td id="required_gms-cr">0.000</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Ur Calcium</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-ca"
+                  step="0.1"
+                  oninput="updateUrineCalculations_2()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-ca"
+                  step="0.1"
+                  oninput="updateUrineCalculations_2()"
+                />
+              </td>
+              <td id="difference-ca">0.00</td>
+              <td id="required-ca">0.00</td>
+              <td id="required_gms-ca">0.000</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Ur Phosphorus</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-ph"
+                  step="0.1"
+                  oninput="updateUrineCalculations_3()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-ph"
+                  step="0.1"
+                  oninput="updateUrineCalculations_3()"
+                />
+              </td>
+              <td id="difference-ph">0.00</td>
+              <td id="required-ph">0.00</td>
+              <td id="required_gms-ph">0.000</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Ur Uric acid</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-ua"
+                  step="0.1"
+                  oninput="updateUrineCalculations_4()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-ua"
+                  step="0.1"
+                  oninput="updateUrineCalculations_4()"
+                />
+              </td>
+              <td id="difference-ua">0.00</td>
+              <td id="required-ua">0.00</td>
+              <td id="required_gms-ua">0.000</td>
+            </tr>
+            </table>
+        </div>
+        <div class="urine-double-salts-section-1"></div>
+          <h3>
+            {Salt: NaHCO3}. {Molecular Weight: 84}. {Analyte
+            Atomic Weight: 23}
+          </h3>
+          <table>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Analyte (mmol)
+              </th>
+              <th>Base</th>
+              <th>Target</th>
+              <th>Difference</th>
+              <th>mmols Required</th>
+              <th>Amount Required (mg)</th>
+              <th>Amount Required (gms)</th>
 
-        <div class="compartment">Tumour Markers</div>
-        <div class="compartment">Down Screening Markers</div>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Sodium</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-na"
+                  step="0.1"
+                  oninput="updateUrineCalculations_5()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-na"
+                  step="0.1"
+                  oninput="updateUrineCalculations_5()"
+                />
+              </td>
+              <td id="difference-na">0.00</td>
+              <td id="mmols-required-na">0.00</td>
+              <td id="amount-required-mg-na">0.00</td>
+              <td id="amount-required-gms-na">0.000</td>
+            </tr>
+          </table>
+        <div class="urine-double-salts-section-2">
+          <h3>
+            {Salt: KCL}. {Molecular Weight: 74.55}. {Analyte At. wt.:39.09}
+          </h3>
+          <table>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Analyte (mmol)</th>
+              <th>Base</th>
+              <th>Target</th>
+              <th>Difference</th>
+              <th>mmols Required</th>
+              <th>Amount Required (mg)</th>
+              <th>Amount Required (gms)</th>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Potassium</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-k"
+                  step="0.1"
+                  oninput="updateUrineCalculations_6()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-k"
+                  step="0.1"
+                  oninput="updateUrineCalculations_6()"
+                />
+              </td>
+              <td id="difference-k">0.00</td>
+              <td id="mmols-required-k">0.00</td>
+              <td id="amount-required-k">0.00</td>
+              <td id="amount-required-gms-k">0.00</td>
+            </tr>
+      </table>
+      <button class="print-btn no-print" onclick="printTables()">Print Table</button>
+    </div>
+  </div>
+  <div class="compartment" onclick="toggleUrineProtein()">Urine Protein</div>
+  <div id="urineprotein-compartment" class="compartment-content" >
+  
+  <div id="urine-protein-section">
+    <div class="volume-section-urineprotein">
+      <label for="volume-4">Volume (ml):</label>
+      <input
+        type="number"
+        id="volume-4"
+        value="0"
+        step="100"
+        oninput="updateUmpCalculation_0()"
+      />
+    </div>
+    <table class="excel-table-urineprotein">
+      <tr>
+        <table>
+          <tr>
+            <th>sl.no</th>
+            <th>Analyte</th>
+            <th>Units</th>
+            <th>Base</th>
+            <th>Target</th>
+            <th>Difference</th>
+            <th>Amount Required</th>
+            <th>Concentration</th>
+            <th>Volume Required</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Ur Microalbumin</td>
+            <td>mg/L</td>
+            <td><input type="number"
+              id="base-um"
+              step="0.1"
+              oninput="updateUmpCalculation_1()"></td>
+              <td><input type="number"
+                id="target-um"
+                step="0.1"
+                oninput="updateUmpCalculation_1()"></td>
+                <td id="difference-um">0.0</td>
+               <td id="amount-required-um">0.0</td>
+               <td><input type="number"
+                id="conc-um"
+                step="0.1"
+                oninput="updateUmpCalculation_1()"></td>
+                <td id="volume-required-um">0.0</td>     
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ur Protein</td>
+                <td>mg/dL</td>
+                <td><input type="number"
+                  id="base-up"
+                  step="0.1"
+                  oninput="updateUmpCalculation_2()"
+                  ></td>
+                <td><input type="number"
+                  id="target-up"
+                  step="0.1"
+                  oninput="updateUmpCalculation_2()"></td>
+                  <td id="difference-up">0.0</td>
+                  <td id="amount-required-up">0.0</td>
+                  <td><input type="number"
+                    id="conc-up"
+                    step="0.1"
+                    oninput="updateUmpCalculation_2()"></td>
+                    <td id="volume-required-up">0.0</td>
+                   </tr>
+        </table>
+        <button class="print-btn no-print" onclick="printTables()">Print Table</button>
+
+      </div>
+  </div>
+  <div class="compartment" onclick="toggleTumourMarker()">Tumour Marker</div>
+  <div id="tumourmarker-compartment" class="compartment-content" >
+  
+  <div id="tumour-marker-section">
+    <div class="volume-section-tumourmarker">
+      <label for="volume-5">Volume (ml):</label>
+      <input
+        type="number"
+        id="volume-5"
+        value="0"
+        step="100"
+        oninput="updateTMCalculation_0()"
+      />
+    </div>
+    <table class="excel-table-tumourmarker">
+      <tr>
+        <table>
+          <tr>
+            <th>sl.no</th>
+             <th>Analyte</th>
+             <th>Unit</th>
+             <th>Base</th>
+             <th>Target</th>
+             <th>Difference</th>
+             <th>Amount Required</th>
+             <th>Concentration</th>
+             <th>Volume Required</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>AFP</td>
+            <td>IU/mL</td>
+            <td><input type="number"
+              id="base-afptm"
+              step="0.1"
+              oninput="updateTMCalculation_1()"></td>
+              <td><input type="number"
+                id="target-afptm"
+                step="0.1"
+                oninput="updateTMCalculation_1()"></td>
+                <td id="difference-afptm">0.0</td>
+               <td id="amount-required-afptm">0.0</td>
+               <td><input type="number"
+                id="conc-afptm"
+                step="0.1"
+                oninput="updateTMCalculation_1()"></td>
+                <td id="volume-required-afptm">0.0</td>     
+              </tr> <tr>
+                <td>1</td>
+                <td>Total Beta HCG</td>
+                <td>mIU/mL</td>
+                <td><input type="number"
+                  id="base-hcg"
+                  step="0.1"
+                  oninput="updateTMCalculation_2()"></td>
+                  <td><input type="number"
+                    id="target-hcg"
+                    step="0.1"
+                    oninput="updateTMCalculation_2()"></td>
+                    <td id="difference-hcg">0.0</td>
+                   <td id="amount-required-hcg">0.0</td>
+                   <td><input type="number"
+                    id="conc-hcg"
+                    step="0.1"
+                    oninput="updateTMCalculation_2()"></td>
+                    <td id="volume-required-hcg">0.0</td>     
+                  </tr> <tr>
+                    <td>3</td>
+                    <td>Total PSA</td>
+                    <td>ng/mL</td>
+                    <td><input type="number"
+                      id="base-psa"
+                      step="0.1"
+                      oninput="updateTMCalculation_3()"></td>
+                      <td><input type="number"
+                        id="target-psa"
+                        step="0.1"
+                        oninput="updateTMCalculation_3()"></td>
+                        <td id="difference-psa">0.0</td>
+                       <td id="amount-required-psa">0.0</td>
+                       <td><input type="number"
+                        id="conc-psa"
+                        step="0.1"
+                        oninput="updateTMCalculation_3()"></td>
+                        <td id="volume-required-psa">0.0</td>     
+                      </tr>
+        </table>
+        <button class="print-btn no-print" onclick="printTables()">Print Table</button>
+      </div>
+    </div>
+    <div class="compartment" onclick="toggleDownScreening()">Biomedical Marker for Down Screening</div>
+    <div id="downscreening-compartment" class="compartment-content" >
+    
+    <div id="down-screeninig-section">
+      <div class="volume-section-downscreening">
+        <label for="volume-6">Volume (ml):</label>
+        <input
+          type="number"
+          id="volume-6"
+          value="0"
+          step="100"
+          oninput="updateDSCalculation_0()"
+        />
+      </div>
+      <table class="excel-table-downscreening">
+        <tr>
+          <table>
+            <tr>
+              <th>sl.no</th>
+               <th>Analyte</th>
+               <th>Unit</th>
+               <th>Base</th>
+               <th>Target</th>
+               <th>Difference</th>
+               <th>Amount Required</th>
+               <th>Concentration</th>
+               <th>Volume Required</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>AFP</td>
+              <td>IU/mL</td>
+              <td><input type="number"
+                id="base-afpds"
+                step="0.1"
+                oninput="updateDSCalculation_1()"></td>
+                <td><input type="number"
+                  id="target-afpds"
+                  step="0.1"
+                  oninput="updateDSCalculation_1()"></td>
+                  <td id="difference-afpds">0.0</td>
+                 <td id="amount-required-afpds">0.0</td>
+                 <td><input type="number"
+                  id="conc-afpds"
+                  step="0.1"
+                  oninput="updateDSCalculation_1()"></td>
+                  <td id="volume-required-afpds">0.0</td>     
+                </tr> <tr>
+                  <td>1</td>
+                  <td>Free Beta HCG</td>
+                  <td>ng/mL</td>
+                  <td><input type="number"
+                    id="base-fbhcg"
+                    step="0.1"
+                    oninput="updateDSCalculation_2()"></td>
+                    <td><input type="number"
+                      id="target-fbhcg"
+                      step="0.1"
+                      oninput="updateDSCalculation_2()"></td>
+                      <td id="difference-fbhcg">0.0</td>
+                     <td id="amount-required-fbhcg">0.0</td>
+                     <td><input type="number"
+                      id="conc-fbhcg"
+                      step="0.1"
+                      oninput="updateDSCalculation_2()"></td>
+                      <td id="volume-required-fbhcg">0.0</td>     
+                    </tr> <tr>
+                      <td>3</td>
+                      <td>PAPP-A</td>
+                      <td>mIU/mL</td>
+                      <td><input type="number"
+                        id="base-pa"
+                        step="0.1"
+                        oninput="updateDSCalculation_3()"></td>
+                        <td><input type="number"
+                          id="target-pa"
+                          step="0.1"
+                          oninput="updateDSCalculation_3()"></td>
+                          <td id="difference-pa">0.0</td>
+                         <td id="amount-required-pa">0.0</td>
+                         <td><input type="number"
+                          id="conc-pa"
+                          step="0.1"
+                          oninput="updateDSCalculation_3()"></td>
+                          <td id="volume-required-pa">0.0</td>     
+                        </tr>
+          </table>
+          <button class="print-btn no-print" onclick="printTables()">Print Table</button>
+        </div>
+      </div>
         <div class="compartment">Cardiac Markers</div>
-        <div class="compartment">Urine Chemistry</div>
-        <div class="compartment">Urine Protein</div>
         <div class="compartment">Trace Metals</div>
       </div>
      <!-- Footer with name -->
