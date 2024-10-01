@@ -129,7 +129,7 @@ input[type="number"]::-webkit-outer-spin-button {
       /* Name at the bottom */
       .footer {
         margin-top: 50px;
-        font-size: 10px;
+        font-size: 18px;
         color: #4b0082;
       }
   /* Elegant Print Button Styling */
@@ -365,6 +365,151 @@ input[type="number"] {
     compartment.style.display = "none";
   }
 }
+// Update calculation for AFP in Down Screening
+function updateDSCalculation_1() {
+  const baseAFP = parseFloat(document.getElementById("base-afpds").value) || 0;
+  const targetAFP = parseFloat(document.getElementById("target-afpds").value) || 0;
+  const concentrationAFP = parseFloat(document.getElementById("conc-afpds").value) || 0;
+  const volumeAFP = parseFloat(document.getElementById("volume-6").value) || 0;
+
+  // Calculate difference
+  const differenceAFP = targetAFP - baseAFP;
+  document.getElementById("difference-afpds").textContent = differenceAFP.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredAFP = differenceAFP * volumeAFP ;
+  document.getElementById("amount-required-afpds").textContent = amountRequiredAFP.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredAFP = amountRequiredAFP / concentrationAFP;
+  document.getElementById("volume-required-afpds").textContent = volumeRequiredAFP.toFixed(2);
+}
+
+// Update calculation for Free Beta HCG in Down Screening
+function updateDSCalculation_2() {
+  const baseHCG = parseFloat(document.getElementById("base-fbhcg").value) || 0;
+  const targetHCG = parseFloat(document.getElementById("target-fbhcg").value) || 0;
+  const concentrationHCG = parseFloat(document.getElementById("conc-fbhcg").value) || 0;
+  const volumeHCG = parseFloat(document.getElementById("volume-6").value) || 0;
+
+  // Calculate difference
+  const differenceHCG = targetHCG - baseHCG;
+  document.getElementById("difference-fbhcg").textContent = differenceHCG.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredHCG = differenceHCG * volumeHCG ;
+  document.getElementById("amount-required-fbhcg").textContent = amountRequiredHCG.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredHCG = amountRequiredHCG / concentrationHCG;
+  document.getElementById("volume-required-fbhcg").textContent = volumeRequiredHCG.toFixed(2);
+}
+
+// Update calculation for PAPP-A in Down Screening
+function updateDSCalculation_3() {
+  const basePA = parseFloat(document.getElementById("base-pa").value) || 0;
+  const targetPA = parseFloat(document.getElementById("target-pa").value) || 0;
+  const concentrationPA = parseFloat(document.getElementById("conc-pa").value) || 0;
+  const volumePA = parseFloat(document.getElementById("volume-6").value) || 0;
+
+  // Calculate difference
+  const differencePA = targetPA - basePA;
+  document.getElementById("difference-pa").textContent = differencePA.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredPA = differencePA * volumePA ;
+  document.getElementById("amount-required-pa").textContent = amountRequiredPA.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredPA = amountRequiredPA / concentrationPA;
+  document.getElementById("volume-required-pa").textContent = volumeRequiredPA.toFixed(2);
+}
+
+// Function to update enzyme activity for CK
+function updateEnzymeActivityCK_() {
+  // Get the specific activity and protein concentration values
+  const specificActivityCK = parseFloat(document.getElementById("spec-ck").value) || 0;
+  const proteinConcentrationCK = parseFloat(document.getElementById("prot-ck").value) || 0;
+
+  // Calculate enzyme activity
+  const enzymeActivityCK = specificActivityCK * proteinConcentrationCK;
+
+  // Display the calculated enzyme activity
+  document.getElementById("enz-act-ck-ml").textContent = enzymeActivityCK.toFixed(2);
+  const enzymeActivityCKμl = enzymeActivityCK / 1000;
+  document.getElementById("enz-act-ck").textContent = enzymeActivityCKμl.toFixed(2);
+}
+
+// Update calculation for Creatine Kinase (CK) in Cardiac Markers
+function updateCMCalculation_1() {
+  const baseCK = parseFloat(document.getElementById("base-ck").value) || 0;
+  const targetCK = parseFloat(document.getElementById("target-ck").value) || 0;
+  const concentrationCK = parseFloat(document.getElementById("conc-ck").value) || 0;
+  const volumeCK = parseFloat(document.getElementById("volume-8").value) || 0;
+
+  // Calculate difference
+  const differenceCK = targetCK - baseCK;
+  document.getElementById("difference-ck").textContent = differenceCK.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredCK = differenceCK * volumeCK / 1000;
+  document.getElementById("amount-required-ck").textContent = amountRequiredCK.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredCK = amountRequiredCK / concentrationCK;
+  document.getElementById("volume-required-ck").textContent = volumeRequiredCK.toFixed(2);
+}
+
+// Update calculation for CKMB mass in Cardiac Markers
+function updateCMCalculation_2() {
+  const baseCKMB = parseFloat(document.getElementById("base-ckmb").value) || 0;
+  const targetCKMB = parseFloat(document.getElementById("target-ckmb").value) || 0;
+  const concentrationCKMB = parseFloat(document.getElementById("conc-ckmb").value) || 0;
+  const volumeCKMB = parseFloat(document.getElementById("volume-8").value) || 0;
+
+  // Calculate difference
+  const differenceCKMB = targetCKMB - baseCKMB;
+  document.getElementById("difference-ckmb").textContent = differenceCKMB.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredCKMB = differenceCKMB * volumeCKMB / 1;
+  document.getElementById("amount-required-ckmb").textContent = amountRequiredCKMB.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredCKMB = amountRequiredCKMB / concentrationCKMB;
+  document.getElementById("volume-required-ckmb").textContent = volumeRequiredCKMB.toFixed(2);
+}
+
+// Update calculation for Troponin T in Cardiac Markers
+function updateCMCalculation_3() {
+  const baseTT = parseFloat(document.getElementById("base-tt").value) || 0;
+  const targetTT = parseFloat(document.getElementById("target-tt").value) || 0;
+  const concentrationTT = parseFloat(document.getElementById("conc-tt").value) || 0;
+  const volumeTT = parseFloat(document.getElementById("volume-8").value) || 0;
+
+  // Calculate difference
+  const differenceTT = targetTT - baseTT;
+  document.getElementById("difference-tt").textContent = differenceTT.toFixed(2);
+
+  // Calculate amount required
+  const amountRequiredTT = differenceTT * volumeTT / 1;
+  document.getElementById("amount-required-tt").textContent = amountRequiredTT.toFixed(2);
+
+  // Calculate volume required (Amount Required / Concentration)
+  const volumeRequiredTT = amountRequiredTT / concentrationTT;
+  document.getElementById("volume-required-tt").textContent = volumeRequiredTT.toFixed(2);
+}
+
+// Toggle the visibility of the Cardiac Markers section
+function toggleCardiacMarkers() {
+  const compartment = document.getElementById("cardiacmarkers-compartment");
+  if (compartment.style.display === "none" || compartment.style.display === "") {
+    compartment.style.display = "block";
+  } else {
+    compartment.style.display = "none";
+  }
+}
+
 
       function toggleTumourMarker() {
   var compartment = document.getElementById("tumourmarker-compartment");
@@ -386,7 +531,7 @@ function updateTMCalculation_1() {
   document.getElementById("difference-afptm").textContent = differenceAFP.toFixed(2);
 
   // Calculate amount required
-  const amountRequiredAFP = differenceAFP * volumeAFP / 100;
+  const amountRequiredAFP = differenceAFP * volumeAFP / 1;
   document.getElementById("amount-required-afptm").textContent = amountRequiredAFP.toFixed(2);
 
   // Calculate volume required (Amount Required / Concentration)
@@ -396,23 +541,39 @@ function updateTMCalculation_1() {
 
 // Update calculation for Total Beta HCG
 function updateTMCalculation_2() {
-  const baseHCG = parseFloat(document.getElementById("base-hcg").value) || 0;
-  const targetHCG = parseFloat(document.getElementById("target-hcg").value) || 0;
-  const concentrationHCG = parseFloat(document.getElementById("conc-hcg").value) || 0;
-  const volumeHCG = parseFloat(document.getElementById("volume-5").value) || 0;
+  const baseTBHCG = parseFloat(document.getElementById("base-tbhcg").value) || 0;
+  const targetTBHCG = parseFloat(document.getElementById("target-tbhcg").value) || 0;
+  const concentrationTBHCG = parseFloat(document.getElementById("conc-tbhcg").value) || 0;
+  const volumeTBHCG = parseFloat(document.getElementById("volume-5").value) || 0;
+
+  // Debugging to check the input values
+  console.log("Base TBHCG:", baseTBHCG);
+  console.log("Target TBHCG:", targetTBHCG);
+  console.log("Concentration TBHCG:", concentrationTBHCG);
+  console.log("Volume TBHCG:", volumeTBHCG);
 
   // Calculate difference
-  const differenceHCG = targetHCG - baseHCG;
-  document.getElementById("difference-hcg").textContent = differenceHCG.toFixed(2);
+  const differenceTBHCG = targetTBHCG - baseTBHCG;
+  console.log("Difference TBHCG:", differenceTBHCG);
+  document.getElementById("difference-tbhcg").textContent = differenceTBHCG.toFixed(2);
 
   // Calculate amount required
-  const amountRequiredHCG = differenceHCG * volumeHCG / 100;
-  document.getElementById("amount-required-hcg").textContent = amountRequiredHCG.toFixed(2);
+  const amountRequiredTBHCG = differenceTBHCG * volumeTBHCG;
+  console.log("Amount Required TBHCG:", amountRequiredTBHCG);
+  document.getElementById("amount-required-tbhcg").textContent = amountRequiredTBHCG.toFixed(2);
 
   // Calculate volume required (Amount Required / Concentration)
-  const volumeRequiredHCG = amountRequiredHCG / concentrationHCG;
-  document.getElementById("volume-required-hcg").textContent = volumeRequiredHCG.toFixed(2);
+  let volumeRequiredTBHCG = 0;
+  if (concentrationTBHCG > 0) {
+    volumeRequiredTBHCG = amountRequiredTBHCG / concentrationTBHCG;
+    console.log("Volume Required TBHCG:", volumeRequiredTBHCG);
+    document.getElementById("volume-required-tbhcg").textContent = volumeRequiredTBHCG.toFixed(2);
+  } else {
+    console.log("Concentration TBHCG is zero or invalid");
+    document.getElementById("volume-required-tbhcg").textContent = "N/A";  // Handle division by 0
+  }
 }
+
 
 // Update calculation for Total PSA
 function updateTMCalculation_3() {
@@ -426,7 +587,7 @@ function updateTMCalculation_3() {
   document.getElementById("difference-psa").textContent = differencePSA.toFixed(2);
 
   // Calculate amount required
-  const amountRequiredPSA = differencePSA * volumePSA / 100;
+  const amountRequiredPSA = differencePSA * volumePSA / 1 ;
   document.getElementById("amount-required-psa").textContent = amountRequiredPSA.toFixed(2);
 
   // Calculate volume required (Amount Required / Concentration)
@@ -736,34 +897,48 @@ function updateUrineCalculations_1() {
   document.getElementById("required_gms-cr").innerText = requiredCrGms.toFixed(3);
 }
 
-function updateUrineCalculations_2() {
-  // Analytes: Urine Calcium
-  const baseCa = parseFloat(document.getElementById("base-ca").value);
-  const targetCa = parseFloat(document.getElementById("target-ca").value);
-  const differenceCa = targetCa - baseCa;
-  const requiredCaMg = (differenceCa * volume) / 100;
-  const requiredCaGms = requiredCaMg / 1000;
-
-  // Set values in table for Urine Calcium
-  document.getElementById("difference-ca").innerText = differenceCa.toFixed(2);
-  document.getElementById("required-ca").innerText = requiredCaMg.toFixed(2);
-  document.getElementById("required_gms-ca").innerText = requiredCaGms.toFixed(3);
+function updateDoubleSaltCalculations_003() {
+        var base = parseFloat(document.getElementById("base-ca-03").value) || 0;
+        var target =
+          parseFloat(document.getElementById("target-ca-03").value) || 0;
+        var difference = target - base;
+        document.getElementById("difference-ca-03").textContent =
+          difference.toFixed(2);
+        var volume = parseFloat(document.getElementById("volume-3").value) || 0;
+        var requiredAmount = (difference * volume) / 100;
+        document.getElementById("required-ca-03").textContent =
+          requiredAmount.toFixed(2);
+        var mmolsRequired = requiredAmount / 40.08;
+        document.getElementById("mmols-required-ca-03").textContent =
+          mmolsRequired.toFixed(2);
+        var amountRequiredMg = mmolsRequired * 111;
+        document.getElementById("amount-required-mg-ca-03").textContent =
+          amountRequiredMg.toFixed(2);
+        var amountRequiredGms = amountRequiredMg / 1000;
+        document.getElementById("amount-required-gms-ca-03").textContent =
+          amountRequiredGms.toFixed(3);
 }
-
-function updateUrineCalculations_3() {
-  // Analytes: Urine Phosphorus
-  const basePh = parseFloat(document.getElementById("base-ph").value);
-  const targetPh = parseFloat(document.getElementById("target-ph").value);
-  const differencePh = targetPh - basePh;
-  const requiredPhMg = (differencePh * volume) / 100;
-  const requiredPhGms = requiredPhMg / 1000;
-
-  // Set values in table for Urine Phosphorus
-  document.getElementById("difference-ph").innerText = differencePh.toFixed(2);
-  document.getElementById("required-ph").innerText = requiredPhMg.toFixed(2);
-  document.getElementById("required_gms-ph").innerText = requiredPhGms.toFixed(3);
-}
-
+function updateDoubleSaltCalculations_05() {
+        var base = parseFloat(document.getElementById("base-salt-ur-5").value) || 0;
+        var target =
+          parseFloat(document.getElementById("target-salt-ur-5").value) || 0;
+        var difference = target - base;
+        document.getElementById("difference-salt-ur-5").textContent =
+          difference.toFixed(2);
+        var volume = parseFloat(document.getElementById("volume-3").value) || 0;
+        var requiredAmount = (difference * volume) / 100;
+        document.getElementById("required-salt-ur-5").textContent =
+          requiredAmount.toFixed(2);
+        var mmolsRequired = requiredAmount / 30.97;
+        document.getElementById("mmols-required-salt-ur-5").textContent =
+          mmolsRequired.toFixed(2);
+        var amountRequiredMg = mmolsRequired * 136.09;
+        document.getElementById("amount-required-mg-salt-ur-5").textContent =
+          amountRequiredMg.toFixed(2);
+        var amountRequiredGms = amountRequiredMg / 1000;
+        document.getElementById("amount-required-gms-salt-ur-5").textContent =
+          amountRequiredGms.toFixed(3);
+        }
 function updateUrineCalculations_4() {
   // Analytes: Urine Uric Acid
   const baseUa = parseFloat(document.getElementById("base-ua").value);
@@ -786,7 +961,7 @@ function updateUrineCalculations_5() {
   // Analytes: Sodium
   const baseNa = parseFloat(document.getElementById("base-na").value);
   const targetNa = parseFloat(document.getElementById("target-na").value);
-  const differenceNa = baseNa - targetNa;
+  const differenceNa = targetNa - baseNa ;
   const mmolsRequiredNa = (differenceNa * volume) / 1000;
   const amountRequiredMgNa = mmolsRequiredNa * 84;
   const amountRequiredGmsNa = amountRequiredMgNa / 1000;
@@ -800,10 +975,12 @@ function updateUrineCalculations_5() {
 
 // Function to update double salts section calculations for KCL
 function updateUrineCalculations_6() {
+  const volume = parseFloat(document.getElementById("volume-3").value);
+
   // Analytes: Potassium
   const baseK = parseFloat(document.getElementById("base-k").value);
   const targetK = parseFloat(document.getElementById("target-k").value);
-  const differenceK = baseK - targetK;
+  const differenceK = targetK - baseK;
   const mmolsRequiredK = (differenceK * volume) / 1000;
   const amountRequiredMgK = mmolsRequiredK * 74.55;
   const amountRequiredGmsK = amountRequiredMgK / 1000;
@@ -825,6 +1002,55 @@ function updateUrineCalculations_0() {
   updateUrineCalculations_5();
   updateUrineCalculations_6();
 }
+function toggleTraceMetals() {
+  const tracemetalsCompartment = document.getElementById('tracemetals-compartment');
+  
+  // Toggle display between 'none' and 'block'
+  if (tracemetalsCompartment.style.display === 'none' || tracemetalsCompartment.style.display === '') {
+    tracemetalsCompartment.style.display = 'block';
+  } else {
+    tracemetalsCompartment.style.display = 'none';
+  }
+}
+
+function updateTRMCalculation_1() {
+        var base = parseFloat(document.getElementById("base-cu").value) || 0;
+        var target =
+          parseFloat(document.getElementById("target-cu").value) || 0;
+        var difference = target - base;
+        document.getElementById("difference-cu").textContent =
+          difference.toFixed(2);
+        var volume = parseFloat(document.getElementById("volume-7").value) || 0;
+        var requiredAmount = (difference * volume) / 100;
+         document.getElementById("required-amount-cu").textContent = 
+         requiredAmount.toFixed(2);
+        var mmolsRequired = requiredAmount / 63.546;
+        document.getElementById("mmols-required-cu").textContent =
+          mmolsRequired.toFixed(2);
+        var amountRequiredMg = mmolsRequired * 159.609;
+        document.getElementById("amount-required-mg-cu").textContent =
+          amountRequiredMg.toFixed(3);
+        }
+
+
+ function updateTRMCalculation_2() {
+        var base = parseFloat(document.getElementById("base-zn").value) || 0;
+        var target =
+          parseFloat(document.getElementById("target-zn").value) || 0;
+        var difference = target - base;
+        document.getElementById("difference-zn").textContent =
+          difference.toFixed(2);
+        var volume = parseFloat(document.getElementById("volume-7").value) || 0;
+        var requiredAmount = (difference * volume) / 100;
+        document.getElementById("required-amount-zn").textContent = 
+        requiredAmount.toFixed(2);
+        var mmolsRequired = requiredAmount / 65.38;
+        document.getElementById("mmols-required-zn").textContent =
+          mmolsRequired.toFixed(2);
+        var amountRequiredMg = mmolsRequired * 161.47;
+        document.getElementById("amount-required-mg-zn").textContent =
+          amountRequiredMg.toFixed(3);
+        }
 
 
       function updateCalculations() {
@@ -910,6 +1136,40 @@ function updateUrineCalculations_0() {
         document.getElementById("amount-required-gms-salt-2").textContent =
           amountRequiredGms.toFixed(3);
         }
+        function updateDoubleSaltCalculations_03() {
+        var base = parseFloat(document.getElementById("base-salt-03").value) || 0;
+        var target =
+          parseFloat(document.getElementById("target-salt-03").value) || 0;
+        var difference = target - base;
+        document.getElementById("difference-salt-03").textContent =
+          difference.toFixed(2);
+        var volume = parseFloat(document.getElementById("volume").value) || 0;
+        var requiredAmount = (difference * volume) / 100;
+        document.getElementById("required-salt-03").textContent =
+          requiredAmount.toFixed(2);
+        var mmolsRequired = requiredAmount / 40.08;
+        document.getElementById("mmols-required-salt-03").textContent =
+          mmolsRequired.toFixed(2);
+        var amountRequiredMg = mmolsRequired * 111;
+        document.getElementById("amount-required-mg-salt-03").textContent =
+          amountRequiredMg.toFixed(2);
+        var amountRequiredGms = amountRequiredMg / 1000;
+        document.getElementById("amount-required-gms-salt-03").textContent =
+          amountRequiredGms.toFixed(3);
+        }
+        function updateDoubleSaltCalculations_04() {
+  var base = parseFloat(document.getElementById("base-salt-04").value) || 0;
+  var target = parseFloat(document.getElementById("target-salt-04").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-salt-04").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0;
+  var mmolsRequired = (difference * volume) / 1000;
+  document.getElementById("mmols-required-salt-04").textContent = mmolsRequired.toFixed(2);
+    var amountRequiredMg = mmolsRequired * 111;
+  document.getElementById("amount-required-mg-salt-04").textContent = amountRequiredMg.toFixed(2);
+  var amountRequiredGms = amountRequiredMg / 1000;
+  document.getElementById("amount-required-gms-salt-04").textContent = amountRequiredGms.toFixed(3);
+   }
 
     function updateDoubleSaltCalculations_3() {
       var base = parseFloat(document.getElementById("base-salt-3").value) || 0;
@@ -1058,16 +1318,21 @@ function updateDoubleSaltCalculations_10() {
   document.getElementById("enzyme-required-u/l-enz-1").textContent =
   enzymeRequireduµl .toFixed(2); 
   // Retrieve uμl from textContent instead of value
-  var uμl = parseFloat(document.getElementById("u/ul-1").textContent);
 
-  // Check if uμl is NaN or 0 to avoid division by zero
-  if (!uμl || isNaN(uμl) || uμl == 0) {
-    alert("Invalid enzyme activity value. Ensure it is correctly calculated in enzyme activity table.");
-    return;
-  }
+  var uμl_1 = parseFloat(document.getElementById("u/ul-1").textContent) || 0;
+  var uμl_01 = parseFloat(document.getElementById("u/ul-01").value) || 0;
 
+  // Use the value from 'u/ul-03' if it's non-zero, otherwise use 'u/ul-3'
+  var uμl = uμl_01 !== 0 ? uμl_01 : uμl_1;
+
+
+  // Calculate the volume required
   var volumeRequired = enzymeRequireduµl / uμl;
+
+  // Display the result
   document.getElementById("volume-required-1").textContent = volumeRequired.toFixed(3);
+
+
 }
 function updateEnzymeCalculations_2() {
   var base = parseFloat(document.getElementById("base-enz-2").value) || 0;
@@ -1079,17 +1344,21 @@ function updateEnzymeCalculations_2() {
   document.getElementById("enzyme-required-u/l-enz-2").textContent =
   enzymeRequireduµl .toFixed(2); 
   // Retrieve uμl from textContent instead of value
-  var uμl = parseFloat(document.getElementById("u/ul-2").textContent);
 
-  // Check if uμl is NaN or 0 to avoid division by zero
-  if (!uμl || isNaN(uμl) || uμl == 0) {
-    alert("Invalid enzyme activity (u/ul-1) value. Ensure it is correctly calculated.");
-    return;
-  }
+  var uμl_2 = parseFloat(document.getElementById("u/ul-2").textContent) || 0;
+  var uμl_02 = parseFloat(document.getElementById("u/ul-02").value) || 0;
 
+  // Use the value from 'u/ul-03' if it's non-zero, otherwise use 'u/ul-3'
+  var uμl = uμl_02 !== 0 ? uμl_02 : uμl_2;
+
+
+  // Calculate the volume required
   var volumeRequired = enzymeRequireduµl / uμl;
+
+  // Display the result
   document.getElementById("volume-required-2").textContent = volumeRequired.toFixed(3);
 }
+
 function updateEnzymeCalculations_3() {
   var base = parseFloat(document.getElementById("base-enz-3").value) || 0;
   var target = parseFloat(document.getElementById("target-enz-3").value) || 0;
@@ -1100,16 +1369,19 @@ function updateEnzymeCalculations_3() {
   document.getElementById("enzyme-required-u/l-enz-3").textContent =
   enzymeRequireduµl .toFixed(2); 
   // Retrieve uμl from textContent instead of value
-  var uμl = parseFloat(document.getElementById("u/ul-3").textContent);
 
-  // Check if uμl is NaN or 0 to avoid division by zero
-  if (!uμl || isNaN(uμl) || uμl == 0) {
-    alert("Invalid enzyme activity (u/ul-1) value. Ensure it is correctly calculated.");
-    return;
-  }
+  var uμl_3 = parseFloat(document.getElementById("u/ul-3").textContent) || 0;
+  var uμl_03 = parseFloat(document.getElementById("u/ul-03").value) || 0;
 
+  // Use the value from 'u/ul-03' if it's non-zero, otherwise use 'u/ul-3'
+  var uμl = uμl_03 !== 0 ? uμl_03 : uμl_3;
+  // Calculate the volume required
   var volumeRequired = enzymeRequireduµl / uμl;
+
+  // Display the result
   document.getElementById("volume-required-3").textContent = volumeRequired.toFixed(3);
+
+
 }
 function updateEnzymeCalculations_4() {
   var base = parseFloat(document.getElementById("base-enz-4").value) || 0;
@@ -1124,7 +1396,6 @@ function updateEnzymeCalculations_4() {
   document.getElementById("volume-required-4").textContent = 
   volumeRequired .toFixed(3)
 }
-
         window.onload = function() {
             document.getElementById('chemistry-section').style.display = 'block'; // Open Chemistry by default
         }
@@ -1143,6 +1414,7 @@ function updateEnzymeCalculations_4() {
                 compartment.style.display = 'block';
             });
         }
+        
    
     </script>
   <body>
@@ -1439,6 +1711,78 @@ function updateEnzymeCalculations_4() {
             </tr>
           </table>
         </div>
+        <!-- Third Double Salts Section (CaCl2) -->
+        <div class="double-salts-section">
+          <h3>
+            {Salt: CaCl2}. {Molecular Weight: 111}. {Analyte
+            Atomic Weight: 40.08}
+          </h3>
+          <table>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Analyte (mmol)
+              </th>
+              <th>Base</th>
+              <th>Target</th>
+              <th>Difference</th>
+              <th>Required amount mg</th>
+              <th>mmols Required</th>
+              <th>Amount Required (mg)</th>
+              <th>Amount Required (gms)</th>
+
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Calcium</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-salt-03"
+                  step="0.1"
+                  oninput="updateDoubleSaltCalculations_03()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-salt-03"
+                  step="0.1"
+                  oninput="updateDoubleSaltCalculations_03()"
+                />
+              </td>
+              <td id="difference-salt-03">0.00</td>
+              <td id="required-salt-03">0.00</td>
+              <td id="mmols-required-salt-03">0.00</td>
+              <td id="amount-required-mg-salt-03">0.00</td>
+              <td id="amount-required-gms-salt-03">0.000</td>
+            </tr>
+             <tr>
+              <td>10</td>
+              <td>Chloride</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-salt-04"
+                  step="0.1"
+                  oninput="updateDoubleSaltCalculations_04()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-salt-04"
+                  step="0.1"
+                  oninput="updateDoubleSaltCalculations_04()"
+                />
+              </td>
+              <td id="difference-salt-04">0.00</td>
+              <td id=".">0.00</td>
+              <td id="mmols-required-salt-04">0.00</td>
+              <td id="amount-required-mg-salt-04">0.00</td>
+              <td id="amount-required-gms-salt-04">0.000</td>
+            </tr>
+          </table>
+        </div>
         <!-- Third Double Salts Section (NaHCO3) -->
         <div class="double-salts-section">
           <h3>
@@ -1459,7 +1803,7 @@ function updateEnzymeCalculations_4() {
 
             </tr>
             <tr>
-              <td>9</td>
+              <td>11</td>
               <td>Sodium</td>
               <td>
                 <input
@@ -1483,7 +1827,7 @@ function updateEnzymeCalculations_4() {
               <td id="amount-required-gms-salt-3">0.000</td>
             </tr>
              <tr>
-              <td>10</td>
+              <td>12</td>
               <td>Bicarbonate</td>
               <td>
                 <input
@@ -1511,7 +1855,7 @@ function updateEnzymeCalculations_4() {
     <!--fourth Double Salts Section -->
     <div class="double-salts-section">
         <h3>
-          {Salt: KH2PO4}. {Molecular Weight: 136.09}. {PHOSPHORUS Atomic
+          {Salt: KH2PO4}. {Molecular Weight: 136.09 g/mol}. {PHOSPHORUS Atomic
           Weight:30.97}
         </h3>
         <table>
@@ -1527,7 +1871,7 @@ function updateEnzymeCalculations_4() {
             <th>Amount Required (gms)</th>
           </tr>
           <tr>
-            <td>11</td>
+            <td>13</td>
             <td>PHOS</td>
             <td>
               <input
@@ -1552,7 +1896,7 @@ function updateEnzymeCalculations_4() {
             <td id="amount-required-gms-salt-5">0.00</td>
           </tr>
           <tr>
-            <td>12</td>
+            <td>14</td>
             <td>K</td>
             <td>
              <input
@@ -1595,7 +1939,7 @@ function updateEnzymeCalculations_4() {
             <th>Amount Required (gms)</th>
           </tr>
           <tr>
-            <td>12</td>
+            <td>14</td>
             <td>K</td>
             <td>
               <input
@@ -1619,7 +1963,7 @@ function updateEnzymeCalculations_4() {
             <td id="amount-required-gms-salt-7">0.00</td>
           </tr>
           <tr>
-            <td>13</td>
+            <td>10</td>
             <td>CL</td>
             <td>
              <input
@@ -1661,7 +2005,7 @@ function updateEnzymeCalculations_4() {
                 <th>Amount Required (gms)</th>
               </tr>
               <tr>
-                <td>14</td>
+                <td>15</td>
                 <td>Lithium</td>
                 <td>
                   <input
@@ -1685,7 +2029,7 @@ function updateEnzymeCalculations_4() {
                 <td id="amount-required-gms-salt-9">0.00</td>
               </tr>
               <tr>
-                <td>13</td>
+                <td>10</td>
                 <td>CL</td>
                 <td>
                   <input
@@ -1777,7 +2121,38 @@ function updateEnzymeCalculations_4() {
                     <td>10,400 mg/mL</td>
                   </tr>
                   
-                </table></div>
+                </table>
+              <table>
+                <tr>
+                  <th>sl.no</th>
+                  <th>Analyte Enzyme</th>
+                  <th>Enzyme Activity (U/μl)</th>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>AST</td>
+                  <td><input type="number"
+                    id="u/ul-01"
+                    step="0.1"
+                    oninput="updateEnzymeActivity_1()"></td>
+                </tr>
+                <tr>
+                  <td>17</td>
+                  <td>ALT</td>
+                  <td><input type="number"
+                    id="u/ul-02"
+                    step="0.1"
+                    oninput="updateEnzymeActivity_2()" ></td>
+                </tr>
+                <tr>
+                  <td>18</td>
+                  <td>ALP</td>
+                  <td><input type="number"
+                    id="u/ul-03"
+                    step="0.1"
+                    oninput="updateEnzymeActivity_3()"></td>
+                </tr>
+              </table></div>
         <!--Eighth Double Salts Section -->
           <div class="double-salts-section">
             <h1>Enzymes</h1>
@@ -1789,7 +2164,7 @@ function updateEnzymeCalculations_4() {
                 <th>Target</th>
                 <th>Difference</th>
                 <th>Enzyme Required U/L</th>
-                <th>Volume required</th>
+                <th>Volume required (μl)</th>
               </tr>
               <tr>
                 <td>16</td>
@@ -2281,52 +2656,6 @@ function updateEnzymeCalculations_4() {
             </tr>
             <tr>
               <td>3</td>
-              <td>Ur Calcium</td>
-              <td>
-                <input
-                  type="number"
-                  id="base-ca"
-                  step="0.1"
-                  oninput="updateUrineCalculations_2()"
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  id="target-ca"
-                  step="0.1"
-                  oninput="updateUrineCalculations_2()"
-                />
-              </td>
-              <td id="difference-ca">0.00</td>
-              <td id="required-ca">0.00</td>
-              <td id="required_gms-ca">0.000</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Ur Phosphorus</td>
-              <td>
-                <input
-                  type="number"
-                  id="base-ph"
-                  step="0.1"
-                  oninput="updateUrineCalculations_3()"
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  id="target-ph"
-                  step="0.1"
-                  oninput="updateUrineCalculations_3()"
-                />
-              </td>
-              <td id="difference-ph">0.00</td>
-              <td id="required-ph">0.00</td>
-              <td id="required_gms-ph">0.000</td>
-            </tr>
-            <tr>
-              <td>5</td>
               <td>Ur Uric acid</td>
               <td>
                 <input
@@ -2350,6 +2679,96 @@ function updateEnzymeCalculations_4() {
             </tr>
             </table>
         </div>
+        <div class="urine-double-salts-section-3"></div>
+          <h3>
+            {Salt: CaCl2}. {Molecular Weight: 111}. {Analyte
+            Atomic Weight: 40.08}
+          </h3>
+          <table>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Analyte (mmol)
+              </th>
+              <th>Base</th>
+              <th>Target</th>
+              <th>Difference</th>
+              <th>Required amount mg</th>
+              <th>mmols Required</th>
+              <th>Amount Required (mg)</th>
+              <th>Amount Required (gms)</th>
+
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Calcium</td>
+              <td>
+                <input
+                  type="number"
+                  id="base-ca-03"
+                  step="0.1"
+                  oninput="updateDoubleSaltCalculations_003()"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="target-ca-03"
+                  step="0.1"
+                  oninput="updateDoubleSaltCalculations_003()"
+                />
+              </td>
+              <td id="difference-ca-03">0.00</td>
+              <td id="required-ca-03">0.00</td>
+              <td id="mmols-required-ca-03">0.00</td>
+              <td id="amount-required-mg-ca-03">0.00</td>
+              <td id="amount-required-gms-ca-03">0.000</td>
+            </tr>
+            <table>
+          </div>
+          <div class="urine-double-salts-section-4">
+            <h3>
+              {Salt: KH2PO4}. {Molecular Weight: 136.09 g/mol}. {PHOSPHORUS Atomic
+              Weight:30.97}
+            </h3>
+            <table>
+              <tr>
+                <th>Sl. No.</th>
+                <th>Analyte (mg)</th>
+                <th>Base</th>
+                <th>Target</th>
+                <th>Difference</th>
+                <th>Required Amount (mg)</th>
+                <th>mmols Required</th>
+                <th>Amount Required (mg)</th>
+                <th>Amount Required (gms)</th>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>PHOS</td>
+                <td>
+                  <input
+                    type="number"
+                    id="base-salt-ur-5"
+                    step="0.1"
+                    oninput="updateDoubleSaltCalculations_05()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    id="target-salt-ur-5"
+                    step="0.1"
+                    oninput="updateDoubleSaltCalculations_05()"
+                  />
+                </td>
+                <td id="difference-salt-ur-5">0.00</td>
+                <td id="required-salt-ur-5">0.00</td>
+                <td id="mmols-required-salt-ur-5">0.00</td>
+                <td id="amount-required-mg-salt-ur-5">0.00</td>
+                <td id="amount-required-gms-salt-ur-5">0.00</td>
+              </tr>
+               </table>
+              
         <div class="urine-double-salts-section-1"></div>
           <h3>
             {Salt: NaHCO3}. {Molecular Weight: 84}. {Analyte
@@ -2433,6 +2852,7 @@ function updateEnzymeCalculations_4() {
               <td id="amount-required-gms-k">0.00</td>
             </tr>
       </table>
+      </div>
       <button class="print-btn no-print" onclick="printTables()">Print Table</button>
     </div>
   </div>
@@ -2558,24 +2978,24 @@ function updateEnzymeCalculations_4() {
                 oninput="updateTMCalculation_1()"></td>
                 <td id="volume-required-afptm">0.0</td>     
               </tr> <tr>
-                <td>1</td>
+                <td>2</td>
                 <td>Total Beta HCG</td>
                 <td>mIU/mL</td>
                 <td><input type="number"
-                  id="base-hcg"
+                  id="base-tbhcg"
                   step="0.1"
                   oninput="updateTMCalculation_2()"></td>
                   <td><input type="number"
-                    id="target-hcg"
+                    id="target-tbhcg"
                     step="0.1"
                     oninput="updateTMCalculation_2()"></td>
-                    <td id="difference-hcg">0.0</td>
-                   <td id="amount-required-hcg">0.0</td>
+                    <td id="difference-tbhcg">0.0</td>
+                   <td id="amount-required-tbhcg">0.0</td>
                    <td><input type="number"
-                    id="conc-hcg"
+                    id="conc-tbhcg"
                     step="0.1"
                     oninput="updateTMCalculation_2()"></td>
-                    <td id="volume-required-hcg">0.0</td>     
+                    <td id="volume-required-tbhcg">0.0</td>     
                   </tr> <tr>
                     <td>3</td>
                     <td>Total PSA</td>
@@ -2597,6 +3017,7 @@ function updateEnzymeCalculations_4() {
                         <td id="volume-required-psa">0.0</td>     
                       </tr>
         </table>
+        <p>*volume unit of concentrate=volume unit of (volume required)</p>
         <button class="print-btn no-print" onclick="printTables()">Print Table</button>
       </div>
     </div>
@@ -2648,7 +3069,7 @@ function updateEnzymeCalculations_4() {
                   oninput="updateDSCalculation_1()"></td>
                   <td id="volume-required-afpds">0.0</td>     
                 </tr> <tr>
-                  <td>1</td>
+                  <td>2</td>
                   <td>Free Beta HCG</td>
                   <td>ng/mL</td>
                   <td><input type="number"
@@ -2687,14 +3108,193 @@ function updateEnzymeCalculations_4() {
                           <td id="volume-required-pa">0.0</td>     
                         </tr>
           </table>
+          <p>*volume unit of concentrate=volume unit of (volume required)</p>
           <button class="print-btn no-print" onclick="printTables()">Print Table</button>
         </div>
       </div>
-        <div class="compartment">Cardiac Markers</div>
-        <div class="compartment">Trace Metals</div>
+      <div class="compartment" onclick="toggleCardiacMarkers()">Cardiac Markers</div>
+      <div id="cardiacmarkers-compartment" class="compartment-content" >
+      
+      <div id="cardiac-markers-section">
+        <div class="volume-section-cardiacmarkers">
+          <label for="volume-8">Volume (ml):</label>
+          <input
+            type="number"
+            id="volume-8"
+            value="0"
+            step="100"
+            oninput="updateCMCalculation_0()"
+          />
+        </div>
+        <h3>Enzyme Activity Calculation</h3>
+        <table class="enzyme-activity-ck">
+          <tr>
+            <th>Analyte</th>
+            <th>Specific Activity U/mg</th>
+            <th>Protein Concentration mg/ml</th>
+            <th>Enzyme Activity U/ml</th>
+            <th>Enzyme Activity (U/μl)</th>
+          </tr>
+          <tr>
+            <td>CK</td>
+            <td><input type="number"
+              id="spec-ck"
+              step="0.1"
+              oninput="updateEnzymeActivityCK_()"></td>
+              <td><input type="number"
+                id="prot-ck"
+                step="0.1"
+                oninput="updateEnzymeActivityCK_()"></td>
+                <td id="enz-act-ck-ml"></td>
+                <td id="enz-act-ck">0.00</td>
+          </tr>
+        </table>
+        <table class="excel-table-cardiacmarkers">
+          <tr>
+            <table>
+              <tr>
+                <th>sl.no</th>
+                 <th>Analyte</th>
+                 <th>Unit</th>
+                 <th>Base</th>
+                 <th>Target</th>
+                 <th>Difference</th>
+                 <th>Amount Required</th>
+                 <th>Concentration</th>
+                 <th>Volume Required</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Creatine Kinase(CK)</td>
+                <td>U/L</td>
+                <td><input type="number"
+                  id="base-ck"
+                  step="0.1"
+                  oninput="updateCMCalculation_1()"></td>
+                  <td><input type="number"
+                    id="target-ck"
+                    step="0.1"
+                    oninput="updateCMCalculation_1()"></td>
+                    <td id="difference-ck">0.0</td>
+                   <td id="amount-required-ck">0.0</td>
+                   <td><input type="number"
+                    id="conc-ck"
+                    step="0.1"
+                    oninput="updateCMCalculation_1()"></td>
+                    <td id="volume-required-ck">0.0</td>     
+                  </tr> <tr>
+                    <td>1</td>
+                    <td>CKMB mass</td>
+                    <td>ng/mL</td>
+                    <td><input type="number"
+                      id="base-ckmb"
+                      step="0.1"
+                      oninput="updateCMCalculation_2()"></td>
+                      <td><input type="number"
+                        id="target-ckmb"
+                        step="0.1"
+                        oninput="updateCMCalculation_2()"></td>
+                        <td id="difference-ckmb">0.0</td>
+                       <td id="amount-required-ckmb">0.0</td>
+                       <td><input type="number"
+                        id="conc-ckmb"
+                        step="0.1"
+                        oninput="updateCMCalculation_2()"></td>
+                        <td id="volume-required-ckmb">0.0</td>     
+                      </tr> <tr>
+                        <td>3</td>
+                        <td>Troponin T</td>
+                        <td>pg/ml</td>
+                        <td><input type="number"
+                          id="base-tt"
+                          step="0.1"
+                          oninput="updateCMCalculation_3()"></td>
+                          <td><input type="number"
+                            id="target-tt"
+                            step="0.1"
+                            oninput="updateCMCalculation_3()"></td>
+                            <td id="difference-tt">0.0</td>
+                           <td id="amount-required-tt">0.0</td>
+                           <td><input type="number"
+                            id="conc-tt"
+                            step="0.1"
+                            oninput="updateCMCalculation_3()"></td>
+                            <td id="volume-required-tt">0.0</td>     
+                          </tr>
+            </table>
+            <p>*volume unit of concentrate=volume unit of (volume required)</p>
+            <button class="print-btn no-print" onclick="printTables()">Print Table</button>
+          </div>
+        </div>
+        <div class="compartment" onclick="toggleTraceMetals()">Trace Metals</div>
+        <div id="tracemetals-compartment" class="compartment-content" >
+        
+        <div id="trace-metals-section">
+          <h3>{Salt:CuSO4 ; Analyte Atomic weight=63.546 ; Molecular weight=159.609 g/mol} 
+            {Salt:ZnSO4 ; Analyte Atomic weight=65.38 ; Molecular weight=161.47 g/mol}
+          </h3>
+          <div class="volume-section-tracemetals">
+            <label for="volume-7">Volume (ml):</label>
+            <input
+              type="number"
+              id="volume-7"
+              value="0"
+              step="100"
+              oninput="updateTRMCalculation_0()"
+            />
+          </div>
+          <table class="excel-table-tracemetals">
+            <tr>
+              <table>
+                <tr>
+                  <th>Sl. No.</th>
+                  <th>Analyte (μg/dL)</th>
+                  <th>Base</th>
+                  <th>Target</th>
+                  <th>Difference</th>
+                  <th>Required Amount (μg)</th>
+                  <th>mmols Required</th>
+                  <th>Amount Required (mg)</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Copper</td>
+                  <td><input type="number"
+                    id="base-cu"
+                    step="0.1"
+                    oninput="updateTRMCalculation_1()"></td>
+                    <td><input type="number"
+                      id="target-cu"
+                      step="0.1"
+                      oninput="updateTRMCalculation_1()"></td>
+                      <td id="difference-cu">0.00</td>
+                      <td id="required-amount-cu">0.00</td>
+                     <td id="mmols-required-cu">0.00</td>
+                     <td id="amount-required-mg-cu">0.00</td>  
+                    </tr> 
+                    <tr>
+                      <td>2</td>
+                      <td>Zinc</td>
+                      <td><input type="number"
+                        id="base-zn"
+                        step="0.1"
+                        oninput="updateTRMCalculation_2()"></td>
+                        <td><input type="number"
+                          id="target-zn"
+                          step="0.1"
+                          oninput="updateTRMCalculation_2()"></td>
+                          <td id="difference-zn">0.00</td>
+                          <td id="required-amount-zn">0.00</td>
+                          <td id="mmols-required-zn">0.00</td>
+                         <td id="amount-required-mg-zn">0.00</td>
+                        </tr> 
+              </table>
+              <button class="print-btn no-print" onclick="printTables()">Print Table</button>
+            </div>
+
       </div>
      <!-- Footer with name -->
-      <div class="footer">mfk</div>
+      <div class="footer">Made by MOHAMMED FAHATH K</div>
     </div>
   </body>
 </html>
