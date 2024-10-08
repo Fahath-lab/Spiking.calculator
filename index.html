@@ -292,6 +292,7 @@ input[type="number"] {
 }
 </style>
     <script>
+      
       // Random background color on page load
       document.addEventListener("DOMContentLoaded", function () {
         var colors = [
@@ -1150,7 +1151,7 @@ function updateTRMCalculation_1() {
         var mmolsRequired = requiredAmount / 40.08;
         document.getElementById("mmols-required-salt-03").textContent =
           mmolsRequired.toFixed(2);
-        var amountRequiredMg = mmolsRequired * 111;
+        var amountRequiredMg = mmolsRequired * 147.01;
         document.getElementById("amount-required-mg-salt-03").textContent =
           amountRequiredMg.toFixed(2);
         var amountRequiredGms = amountRequiredMg / 1000;
@@ -1165,7 +1166,7 @@ function updateTRMCalculation_1() {
   var volume = parseFloat(document.getElementById("volume").value) || 0;
   var mmolsRequired = (difference * volume) / 1000;
   document.getElementById("mmols-required-salt-04").textContent = mmolsRequired.toFixed(2);
-    var amountRequiredMg = mmolsRequired * 111;
+    var amountRequiredMg = mmolsRequired * 147.01;
   document.getElementById("amount-required-mg-salt-04").textContent = amountRequiredMg.toFixed(2);
   var amountRequiredGms = amountRequiredMg / 1000;
   document.getElementById("amount-required-gms-salt-04").textContent = amountRequiredGms.toFixed(3);
@@ -1419,8 +1420,7 @@ function updateEnzymeCalculations_4() {
     </script>
   <body>
     <div class="container">
-      <h1>SPIKING CALCULATOR</h1>
-      
+      <h1>SPIKING CALCULATOR</h1>     
       <div class="compartment" onclick="toggleIntroduction()">Introduction</div>
       <div id="introduction-content" class="compartment-content" >
 
@@ -1451,6 +1451,27 @@ function updateEnzymeCalculations_4() {
     <p>Depending on the units of the analyte, the volume could be expressed in mL, dL, or L, and the calculation is adjusted accordingly. The correct application of units ensures precise spiking, which is critical for maintaining the accuracy and reliability of the experiment or test.</p>
 
     <p>This spiking process allows for precise control of analyte concentrations, facilitating the achievement of desired experimental conditions or mimicking specific physiological states.</p>
+    <h1>Enzyme Activity</h1>
+    <h2>Definition:</h2>
+    <p>Enzyme activity refers to the rate at which an enzyme catalyzes a reaction, indicating how efficiently it converts substrate into product.</p>
+    
+    <h2>Formula:</h2>
+    <pre>
+Enzyme Activity (in IU) = Amount of product formed (μmol) 
+                       ------------------------------
+                         Time (min)
+
+    </pre>
+
+    <h2>Formula to Calculate Enzyme Activity:</h2>
+    <pre>
+Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration (mg)
+</pre>
+
+    <h2>Specific Activity</h2>
+    <h2>Definition:</h2>
+    <p>Specific activity measures the enzyme's efficiency and purity, indicating the amount of product formed per unit time per amount of enzyme (usually expressed in mg).</p>
+
   </div>
       <!-- Compartment Buttons -->
       <div id="chemistry-section" class="compartment-content" style="display: none;">
@@ -1714,7 +1735,7 @@ function updateEnzymeCalculations_4() {
         <!-- Third Double Salts Section (CaCl2) -->
         <div class="double-salts-section">
           <h3>
-            {Salt: CaCl2}. {Molecular Weight: 111}. {Analyte
+            Salt: CaCl2.2H2O. {Molecular Weight: 147.01}. {Analyte
             Atomic Weight: 40.08}
           </h3>
           <table>
@@ -2058,6 +2079,8 @@ function updateEnzymeCalculations_4() {
                 <h2>Enzyme Activity Calculation</h2>
                 <table>
                     <tr>
+                      <p>You can calculate the values (or) Enter the KNOWN Activity value in U/μl</p>
+                      <p>NOTE: Please enter value in any one table only</p>
                       <th>SL.no</th>
                <th>Analyte</th>
                <th>Specific Activity U/mg</th>
@@ -2120,8 +2143,8 @@ function updateEnzymeCalculations_4() {
                       <td>=</td>
                     <td>10,400 mg/mL</td>
                   </tr>
-                  
                 </table>
+                <P>Enter the KNOWN Activity value here ↓↓↓</P>
               <table>
                 <tr>
                   <th>sl.no</th>
@@ -2409,7 +2432,7 @@ function updateEnzymeCalculations_4() {
             step="100"
             oninput="updateReproductiveCalculation()"
           /></div>
-        <p>please enter volume after entering all inputs of base, target, conc.</p>
+          <p> <H2>NOTE:</H2>Please enter volume after entering all inputs of base, target, conc.</p>
           <table>
             <tr>
               <th>Sl.no</th>
@@ -3296,6 +3319,7 @@ function updateEnzymeCalculations_4() {
       </div>
      <!-- Footer with name -->
       <div class="footer">Made by MOHAMMED FAHATH K</div>
+      <div class="footer">நன்றி</div>
     </div>
   </body>
 </html>
