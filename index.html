@@ -291,7 +291,25 @@ input[type="number"] {
   margin-top: 10px;
 }
 </style>
+       <script>
+        function logout() {
+            // Redirect to login page upon logging out
+            alert("You have been logged out.");
+            window.location.href = "https://<your-username>.github.io/<your-login-repo-name>/login.html"; // Redirect to login page
+        }
+    </script>
     <script>
+      // Function to check query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Check if the "loggedIn" parameter is present
+        if (getQueryParam("loggedIn") !== "true") {
+            alert("Please log in first.");
+            window.location.href = "https://fahath-lab.github.io/Login-page/"; // Redirect to login page
+        }
          
       // Random background color on page load
       document.addEventListener("DOMContentLoaded", function () {
@@ -3315,7 +3333,7 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               </table>
               <button class="print-btn no-print" onclick="printTables()">Print Table</button>
             </div>
-
+  <button onclick="logout()">Logout</button>
       </div>
      <!-- Footer with name -->
       <div class="footer">Made by MOHAMMED FAHATH K</div>
