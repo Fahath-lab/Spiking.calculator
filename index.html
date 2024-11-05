@@ -1142,7 +1142,7 @@ function updateTRMCalculation_1() {
         document.getElementById("difference-salt-2").textContent =
           difference.toFixed(2);
         var volume = parseFloat(document.getElementById("volume").value) || 0;
-        var requiredAmount = (difference * volume) / 10000;
+        var requiredAmount = (difference * volume) / 100000; since to convert ug into gram
         document.getElementById("required-salt-2").textContent =
           requiredAmount.toFixed(2);
         var mmolsRequired = requiredAmount / 55.8;
