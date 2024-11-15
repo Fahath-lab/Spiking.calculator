@@ -291,7 +291,8 @@ input[type="number"] {
   margin-top: 10px;
 }
 </style>
-       <script>
+    <script>
+        
         function logout() {
             // Redirect to login page upon logging out
             alert("You have been logged out.");
@@ -310,7 +311,6 @@ input[type="number"] {
             alert("Please log in first.");
             window.location.href = "https://fahath-lab.github.io/Login-page/"; // Redirect to login page
         }
-         
       // Random background color on page load
       document.addEventListener("DOMContentLoaded", function () {
         var colors = [
@@ -1142,7 +1142,7 @@ function updateTRMCalculation_1() {
         document.getElementById("difference-salt-2").textContent =
           difference.toFixed(2);
         var volume = parseFloat(document.getElementById("volume").value) || 0;
-        var requiredAmount = (difference * volume) / 100000 ; 
+        var requiredAmount = (difference * volume) / 100000;
         document.getElementById("required-salt-2").textContent =
           requiredAmount.toFixed(2);
         var mmolsRequired = requiredAmount / 55.8;
@@ -1399,6 +1399,24 @@ function updateEnzymeCalculations_3() {
 
   // Display the result
   document.getElementById("volume-required-3").textContent = volumeRequired.toFixed(3);
+
+
+}
+function updateEnzymeCalculations_5() {
+  var base = parseFloat(document.getElementById("base-enz-5").value) || 0;
+  var target = parseFloat(document.getElementById("target-enz-5").value) || 0;
+  var difference = target - base;
+  document.getElementById("difference-enz-5").textContent = difference.toFixed(2);
+  var volume = parseFloat(document.getElementById("volume").value) || 0; 
+  var enzymeRequireduµl = (difference * volume) / 1000;
+  document.getElementById("enzyme-required-u/l-enz-5").textContent =
+  enzymeRequireduµl .toFixed(2); 
+  // Retrieve uμl from textContent instead of value
+  var uμl_05 = parseFloat(document.getElementById("u/ul-05").value) || 0;
+  var uμl = uμl_05
+  var volumeRequired = enzymeRequireduµl / uμl;
+  // Display the result
+  document.getElementById("volume-required-5").textContent = volumeRequired.toFixed(3);
 
 
 }
@@ -1721,7 +1739,6 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               <th>Required Amount (mg)</th>
               <th>mmols Required</th>
               <th>Amount Required (mg)</th>
-              <th>Amount Required (gms)</th>
             </tr>
             <tr>
               <td>8</td>
@@ -1746,7 +1763,6 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               <td id="required-salt-2">0.00</td>
               <td id="mmols-required-salt-2">0.00</td>
               <td id="amount-required-mg-salt-2">0.00</td>
-              <td id="amount-required-gms-salt-2">0.000</td>
             </tr>
           </table>
         </div>
@@ -2193,6 +2209,14 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
                     step="0.1"
                     oninput="updateEnzymeActivity_3()"></td>
                 </tr>
+                <tr>
+                  <td>20</td>
+                  <td>LIPASE</td>
+                  <td><input type="number"
+                    id="u/ul-05"
+                    step="0.1"
+                    oninput="updateEnzymeActivity_5()"></td>
+                </tr>
               </table></div>
         <!--Eighth Double Salts Section -->
           <div class="double-salts-section">
@@ -2276,11 +2300,28 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
                 <td id="enzyme-required-u/l-enz-3">0.00</td>
                 <td id="volume-required-3">0.00</td>
               </tr>
+              <tr>
+                <td>20</td>
+                <td>LIPASE</td>
+                <td><input type="number"
+                  id="base-enz-5"
+                  step="0.1"
+                  oninput="updateEnzymeCalculations_5()"/></td>
+
+                  <td><input type="number"
+                    id="target-enz-5"
+                    step="0.2"
+                    oninput="updateEnzymeCalculations_5()"/></td>
+                  
+                    <td id="difference-enz-5">0.00</td>
+                    <td id="enzyme-required-u/l-enz-5">0.00</td>
+                    <td id="volume-required-5">0.00</td>
+              </tr>
             </table>
           </div>
             <div class="double-salts-section">
               <h2></h2>
-            <table
+            <table>
               <tr>
                 <th>SL.no</th>
                 <th>Anayte</th>
@@ -3333,7 +3374,7 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               </table>
               <button class="print-btn no-print" onclick="printTables()">Print Table</button>
             </div>
-  <button onclick="logout()">Logout</button>
+
       </div>
      <!-- Footer with name -->
       <div class="footer">Made by MOHAMMED FAHATH K</div>
