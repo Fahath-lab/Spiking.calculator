@@ -292,25 +292,6 @@ input[type="number"] {
 }
 </style>
     <script>
-        
-        function logout() {
-            // Redirect to login page upon logging out
-            alert("You have been logged out.");
-            window.location.href = "https://<your-username>.github.io/<your-login-repo-name>/login.html"; // Redirect to login page
-        }
-    </script>
-    <script>
-      // Function to check query parameters
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        // Check if the "loggedIn" parameter is present
-        if (getQueryParam("loggedIn") !== "true") {
-            alert("Please log in first.");
-            window.location.href = "https://fahath-lab.github.io/Login-page/"; // Redirect to login page
-        }
       // Random background color on page load
       document.addEventListener("DOMContentLoaded", function () {
         var colors = [
@@ -888,11 +869,15 @@ function toggleUrineChemistry() {
 function updateUrineCalculations_0() {
   // Volume for urine chemistry
   const volume = parseFloat(document.getElementById("volume-3").value);
+}
 
+
+  function updateUrineCalculations_() {
   // Analytes: Urine Urea
   const baseUr = parseFloat(document.getElementById("base-ur").value);
   const targetUr = parseFloat(document.getElementById("target-ur").value);
   const differenceUr = targetUr - baseUr;
+  var volume = parseFloat(document.getElementById("volume-3").value) || 0;
   const requiredUrMg = (differenceUr * volume) / 100;
   const requiredUrGms = requiredUrMg / 1000;
 
@@ -907,6 +892,7 @@ function updateUrineCalculations_1() {
   const baseCr = parseFloat(document.getElementById("base-cr").value);
   const targetCr = parseFloat(document.getElementById("target-cr").value);
   const differenceCr = targetCr - baseCr;
+  var volume = parseFloat(document.getElementById("volume-3").value) || 0;
   const requiredCrMg = (differenceCr * volume) / 100;
   const requiredCrGms = requiredCrMg / 1000;
 
@@ -915,6 +901,7 @@ function updateUrineCalculations_1() {
   document.getElementById("required-cr").innerText = requiredCrMg.toFixed(2);
   document.getElementById("required_gms-cr").innerText = requiredCrGms.toFixed(3);
 }
+
 
 function updateDoubleSaltCalculations_003() {
         var base = parseFloat(document.getElementById("base-ca-03").value) || 0;
@@ -930,7 +917,7 @@ function updateDoubleSaltCalculations_003() {
         var mmolsRequired = requiredAmount / 40.08;
         document.getElementById("mmols-required-ca-03").textContent =
           mmolsRequired.toFixed(2);
-        var amountRequiredMg = mmolsRequired * 111;
+        var amountRequiredMg = mmolsRequired * 147.01;
         document.getElementById("amount-required-mg-ca-03").textContent =
           amountRequiredMg.toFixed(2);
         var amountRequiredGms = amountRequiredMg / 1000;
@@ -962,6 +949,7 @@ function updateUrineCalculations_4() {
   // Analytes: Urine Uric Acid
   const baseUa = parseFloat(document.getElementById("base-ua").value);
   const targetUa = parseFloat(document.getElementById("target-ua").value);
+  var volume = parseFloat(document.getElementById("volume-3").value) || 0;
   const differenceUa = targetUa - baseUa;
   const requiredUaMg = (differenceUa * volume) / 100;
   const requiredUaGms = requiredUaMg / 1000;
@@ -1010,6 +998,7 @@ function updateUrineCalculations_6() {
   document.getElementById("amount-required-k").innerText = amountRequiredMgK.toFixed(2);
   document.getElementById("amount-required-gms-k").innerText = amountRequiredGmsK.toFixed(3);
 }
+
 
 // Trigger update for all sections when volume changes
 function updateUrineCalculations_0() {
@@ -2715,7 +2704,7 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               <td id="required_gms-ur">0.000</td>
             </tr>
             <tr>
-              <td>2</td>
+              <td>2</td>  
               <td>Ur Creatinine</td>
               <td>
                 <input
@@ -2764,7 +2753,7 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
         </div>
         <div class="urine-double-salts-section-3"></div>
           <h3>
-            {Salt: CaCl2}. {Molecular Weight: 111}. {Analyte
+            {Salt: CaCl2.2H2O}. {Molecular Weight: 147.01}. {Analyte
             Atomic Weight: 40.08}
           </h3>
           <table>
@@ -2935,6 +2924,7 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               <td id="amount-required-gms-k">0.00</td>
             </tr>
       </table>
+      
       </div>
       <button class="print-btn no-print" onclick="printTables()">Print Table</button>
     </div>
