@@ -671,7 +671,7 @@ function updateThyroidCalculation_1() {
     document.getElementById('required-amount-t4').innerText = requiredAmountT4.toFixed(2);
 
     // Calculate volume required
-    const volumeRequiredT4 = requiredAmountT4 / concentrationT4;
+    const volumeRequiredT4 = requiredAmountT4 * concentrationT4;
     document.getElementById('volume-required-t4').innerText = isFinite(volumeRequiredT4) ? volumeRequiredT4.toFixed(2) : '0.00';
   }
   function updateThyroidCalculation_2() {
@@ -2396,9 +2396,9 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               id="concentration-t4"
               step="0.1"
               oninput="updateThyroidCalculation_1()"></td>
-            <td>μg/mL</td>
+            <td>μg/mg</td>
             <td id="volume-required-t4">0.00</td>
-            <td>mL</td>
+            <td>mg</td>
           </tr>
           <tr>
             <td>2</td>
