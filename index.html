@@ -1035,7 +1035,7 @@ function updateTRMCalculation_1() {
         var mmolsRequired = requiredAmount / 63.546;
         document.getElementById("mmols-required-cu").textContent =
           mmolsRequired.toFixed(2);
-        var amountRequiredMg = mmolsRequired * 159.609;
+        var amountRequiredMg = mmolsRequired * 249.68;
         document.getElementById("amount-required-mg-cu").textContent =
           amountRequiredMg.toFixed(3);
         }
@@ -1055,7 +1055,7 @@ function updateTRMCalculation_1() {
         var mmolsRequired = requiredAmount / 65.38;
         document.getElementById("mmols-required-zn").textContent =
           mmolsRequired.toFixed(2);
-        var amountRequiredMg = mmolsRequired * 161.47;
+        var amountRequiredMg = mmolsRequired * 287.54;
         document.getElementById("amount-required-mg-zn").textContent =
           amountRequiredMg.toFixed(3);
         }
@@ -3303,8 +3303,8 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
         <div id="tracemetals-compartment" class="compartment-content" >
         
         <div id="trace-metals-section">
-          <h3>{Salt:CuSO4 ; Analyte Atomic weight=63.546 ; Molecular weight=159.609 g/mol} 
-            {Salt:ZnSO4 ; Analyte Atomic weight=65.38 ; Molecular weight=161.47 g/mol}
+          <h3>{Salt:CuSO4.5H2O ; Analyte Atomic weight=63.546 ; Molecular weight=249.68 g/mol} 
+            {Salt:ZnSO4.7H2O ; Analyte Atomic weight=65.38 ; Molecular weight=287.54 g/mol}
           </h3>
           <div class="volume-section-tracemetals">
             <label for="volume-7">Volume (ml):</label>
