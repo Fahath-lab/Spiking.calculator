@@ -970,7 +970,7 @@ function updateUrineCalculations_5() {
   const targetNa = parseFloat(document.getElementById("target-na").value);
   const differenceNa = targetNa - baseNa ;
   const mmolsRequiredNa = (differenceNa * volume) / 1000;
-  const amountRequiredMgNa = mmolsRequiredNa * 84;
+  const amountRequiredMgNa = mmolsRequiredNa * 58.44;
   const amountRequiredGmsNa = amountRequiredMgNa / 1000;
 
   // Set values in table for Sodium
@@ -2843,7 +2843,7 @@ Enzyme Activity (IU) = Specific Activity (IU/mg) × Total Protein Concentration 
               
         <div class="urine-double-salts-section-1"></div>
           <h3>
-            {Salt: NaHCO3}. {Molecular Weight: 84}. {Analyte
+            {Salt: NaCl}. {Molecular Weight: 58.44}. {Analyte
             Atomic Weight: 23}
           </h3>
           <table>
